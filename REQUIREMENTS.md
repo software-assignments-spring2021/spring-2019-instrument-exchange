@@ -18,7 +18,7 @@ Biography: Jessica is an aspiring studio owner working in Nashville. Her studio 
 high-end equipment including high-quality microphones and acoustic guitars. Since there are a lot of
 aspiring singer-songwriters in Nashville, she wants to advertise to these musicians that they can use
 the equipment in her studio for a low price to record or rehearse. Using Instrument Exchange, 
-local studios like Jessica can list their inventory of equipment, recording rates, and available spaces. 
+local studio owners like Jessica can list their inventory of equipment, recording rates, and available spaces. 
 Musicians can browse Instrument Exchange to find spaces that they can afford and that have the equipment they need in stock.
 
 ### Joseph Kim
