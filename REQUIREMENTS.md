@@ -1,7 +1,8 @@
-#End-User Observations
+# End-User Observations
 
-Daniel Lee
+### Daniel Lee
 Location: New York, NY
+
 Biography: Daniel is a working guitarist located in New York City. He is looking to upgrade
 his electric guitar to a very specific Stratocaster for a sharper sound. He has read online
 that this guitar is perfect for the genre of music that he plays, but he can’t be sure until
@@ -10,8 +11,9 @@ disposable income and he cannot afford to simply splurge on this pricey guitar, 
 guitar stores don’t have the model in stock. Instrument Exchange is perfect for Daniel
 because he can rent out the model for a few days and try it at a few shows before deciding if it’s worth buying.
 
-Jessica Walton
+### Jessica Walton
 Location: Nashville, TN
+
 Biography: Jessica is an aspiring studio owner working in Nashville. Her studio has a lot of
 high-end equipment including high-quality microphones and acoustic guitars. Since there are a lot of
 aspiring singer-songwriters in Nashville, she wants to advertise to these musicians that they can use
@@ -19,8 +21,9 @@ the equipment in her studio for a low price to record or rehearse. Using Instrum
 local studios like Jessica can list their inventory of equipment, recording rates, and available spaces. 
 Musicians can browse Instrument Exchange to find spaces that they can afford and that have the equipment they need in stock.
 
-Joseph Kim
+### Joseph Kim
 Location: San Jose, CA
+
 Biography: Joseph runs a podcast about education that is quickly rising in popularity.
 His discussion has garnered a lot of attention, and he now wants to upgrade microphones
 for both himself and his co-hosts. He’s heard Shure and Neumann both make great 
