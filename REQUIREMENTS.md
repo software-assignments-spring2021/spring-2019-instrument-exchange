@@ -31,3 +31,7 @@ microphones, but he doesn’t know which would be better for his show until he t
 them both. Joseph could use Instrument Exchange to rent both brands of microphones 
 for a period, record podcasts with both and then receive feedback from his audience 
 about which one is better without needing to invest a full $3000 in a microphone he may not even like.
+
+## Use Cases
+
+![alt text](useCases.png)
