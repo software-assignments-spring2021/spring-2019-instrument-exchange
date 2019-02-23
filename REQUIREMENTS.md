@@ -35,3 +35,30 @@ about which one is better without needing to invest a full $3000 in a microphone
 ## Use Cases
 
 ![alt text](useCases.png)
+
+### Actor: Seller
+
+Use Case: Upload equipment/studio space.
+Description: 
+* Select equipment title from a list or enter manually. 
+* Upload images for the equipment/studio space.
+
+Use Case: Set prices, location, rental duration.
+Description:
+* Determine the rental and selling price for the item.
+* Enter the location.
+* Set the minimum and maximum rental duration before charges apply.
+* Post the item on the general buying/selling board.
+
+### Actor: Buyer
+
+Use Case: Contact sellers.
+Description:
+* Contact the seller of an item via their Instrument Exchange profile.
+* Allow contact through profile messenger, phone, or email.
+
+Use Case: View all available postings
+Description:
+* Enter the website through the main page, where general buying/selling board will be displayed
+* Filter by selling/buying requests and results.
+
