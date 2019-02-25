@@ -62,3 +62,6 @@ Description:
 * Enter the website through the main page, where general buying/selling board will be displayed
 * Filter by selling/buying requests and results.
 
+### Domain Model
+![alt text](domain_models/domain_model_chart.png)
+
