@@ -2,8 +2,8 @@
   
 <h2>Project Details</h2>  
 Instrument Exchange is a project that will focus on primarily two parties:  
-**Buyers**: Consumers who intend to purchase/rent musical equipment and studios  
-**Sellers**: Those who intend to lease/sell musical equipment and studios  
+Buyers: Consumers who intend to purchase/rent musical equipment and studios  
+Sellers: Those who intend to lease/sell musical equipment and studios  
   
 We intend to also include filter options for both parties to provide convenience for buyers.  
 These features include:    
