@@ -16,6 +16,6 @@ We intend to complete this project using JavaScript with the framwork React.
 The project will be developed as a website and utilize PayPal as a means to exchange money.  
   
 <h2>Links</h2>  
-  
- Link to Requirements.md: [Requirements](https://github.com/nyu-software-engineering/instrument-exchange/blob/master/REQUIREMENTS.md)
+
+For more information, please read our [Requirements](https://github.com/nyu-software-engineering/instrument-exchange/blob/master/REQUIREMENTS.md)
 
