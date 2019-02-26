@@ -18,7 +18,8 @@ gender, religion, or sexual orientation.
 ## Team Norms
 
 * Daily standups will occur on Monday, Tuesday, Wednesday and Thursday, from 2:00 - 2:15pm EST, and will be in-person.
-* Our team values honesty, hard work and responsiveness. Team members are not expected to know everything but must
+* Our team values honesty, hard work and responsiveness. 
+* Team members are not expected to know everything but must
 display an earnest effort and desire to learn.
 * Conflicts will be resolved via majority vote.
 * Consensus will be reached via majority vote.
