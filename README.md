@@ -12,7 +12,7 @@ These features include:
   
 If possible, we also intend to integrate a social media platform for the sellers to offer them the opportunity to connect with others interested in musical performances. We will pursue this if there is enough time to do so.  
   
-We intend to complete this project using JavaScript with the framwork React.  
+We intend to complete this project using JavaScript with the framework React.  
 The project will be developed as a website and utilize PayPal as a means to exchange money.  
   
 <h2>Links</h2>  
