@@ -17,5 +17,7 @@ The project will be developed as a website and utilize PayPal as a means to exch
   
 <h2>Links</h2>  
 
-For more information, please read our [Requirements](https://github.com/nyu-software-engineering/instrument-exchange/blob/master/REQUIREMENTS.md)
+For more information, please read our [REQUIREMENTS.md](https://github.com/nyu-software-engineering/instrument-exchange/blob/master/REQUIREMENTS.md)
+
+If you would like to contribute to our project, please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for istructions.
 
