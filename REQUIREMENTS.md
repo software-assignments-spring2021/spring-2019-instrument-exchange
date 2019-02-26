@@ -1,5 +1,7 @@
 ## End-User Observations
 
+### Imaginary Personas
+
 ### Daniel Lee
 Location: New York, NY
 
@@ -31,6 +33,15 @@ microphones, but he doesn’t know which would be better for his show until he t
 them both. Joseph could use Instrument Exchange to rent both brands of microphones 
 for a period, record podcasts with both and then receive feedback from his audience 
 about which one is better without needing to invest a full $3000 in a microphone he may not even like.
+
+### Real life end-users
+
+### Megan S.
+Megan, a friend of Jonathan, plays piano for her NYU religious fellowship on a cheap keyboard. This year, the club has accumulated enough funds to invest in a good-quality instrument, and have let Megan decide what instrument she wants to buy. Megan decided to look at some online reviews for keyboards before buying one she thought was good, but unfortunately, the keyboard lacked velocity control, sounded tacky, and its tone was bright and garish, making it unsuitable for soft worship music. If Megan had a service like Instrument Exchange, she could have rented it off of a local seller in NY, tried it for a few gigs, then returned it when she realized it was not a good fit for her style and needs. Instead, she ended up wasting her fellowship's money and ending up unhappy with the instrument she bought.
+
+### Timothy H.
+Timothy, one of Jonathan's classmates, is an aspiring music producer who likes experimenting with different sounds and samples in his music. He has wanted to incorporate some unique, unconventional instruments into his music like the ukulele and the Chinese erhu, but as these instruments are quite niche, none of his friends own them. Additionally, he does not want to spend hundreds of dollars on an instrument that he potentially would only use once, and digital music samples of these instruments are not only expensive but also sound unrealistic. Instrument Exchange would be the perfect solution for Timothy, who could rent an instrument for a few days and record audio samples using them before deciding if he wants to purcahse the instrument from the seller or return it.
+
 
 ## Use Cases
 
