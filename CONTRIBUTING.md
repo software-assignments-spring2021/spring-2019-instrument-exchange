@@ -30,6 +30,7 @@ display an earnest effort and desire to learn.
 to messages within 2 hours.
 * "Done" means that code for a User Story has been reviewed by a team member and passes tests before merging into the trunk.
 * Sprint cadences are 2 weeks long, as dictated in the course schedule.
+* Priority of the Product Backlog will be discussed at the end of every standup.
 
 
 ## Attribution
