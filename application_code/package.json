@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/nyu-software-engineering/instrument-exchange/issues"
   },
-  "homepage": "https://github.com/nyu-software-engineering/instrument-exchange#readme"
+  "homepage": "https://github.com/nyu-software-engineering/instrument-exchange#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.2"
+  },
+  "devDependencies": {
+    "mongoose": "^5.4.16",
+    "nodemon": "^1.18.10"
+  }
 }

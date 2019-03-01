@@ -1,0 +1,8 @@
+body {
+    background-color: aliceblue;
+}
+
+/* for welcome.hbs */
+#welcome-div {
+    text-align: center;
+}
