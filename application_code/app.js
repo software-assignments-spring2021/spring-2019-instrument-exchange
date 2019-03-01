@@ -2,20 +2,20 @@
 const express = require('express');
 const app = express();
 require('./db');
-const body_parser = require('body-parser');
-const cookie_parser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
-const public_path = path.resolve(__dirname, 'public');
+const publicPath = path.resolve(__dirname, 'public');
 
 
 // setting session options (code used from online slides)
-const session_options = {
+const sessionOptions = {
   secret: 'secret for signing session id',
   saveUninitialized: false,
   resave: false
 };
-app.use(session(session_options));
+app.use(session(sessionOptions));
 
 
 // view engine setup
@@ -24,10 +24,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 // static files setup
-app.use(express.static(public_path));
+app.use(express.static(publicPath));
 
-app.use(cookie_parser());
-app.use(body_parser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
