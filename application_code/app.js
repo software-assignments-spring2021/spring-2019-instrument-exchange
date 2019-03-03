@@ -1,24 +1,44 @@
-var http = require('http');
-var fs = require('fs');
+// app.js
+const express = require('express');
+const app = express();
+require('./db');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const path = require('path');
+const publicPath = path.resolve(__dirname, 'public');
 
-// Node web server
-var server = http.createServer(function(req, res) {
-  console.log("request was made: " + req.url);
-  // Home
-  if (req.url === '/home' || req.url === '/') {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    var html = fs.readFileSync(__dirname + '/index.html', 'utf8');
-    var message = 'Instrument Exchange'; // Basic template
-    html = html.replace('{Message}', message);
-    res.end(html);
-  }
-  // 404 routing
-  else {
-    res.writeHead(404, {'Content-type': 'text/html'});
-    var html = fs.readFileSync(__dirname + '/404.html', 'utf8');
-    res.end(html);
-  }
-});
 
-server.listen(3000, '127.0.0.1');
-console.log("Listening now. Port 3000.");
+// setting session options (code used from online slides)
+const sessionOptions = {
+  secret: 'secret for signing session id',
+  saveUninitialized: false,
+  resave: false
+};
+app.use(session(sessionOptions));
+
+
+// view engine setup
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+
+// static files setup
+app.use(express.static(publicPath));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
+// getting the routes
+const welcome = require('./routes/welcome');
+
+
+
+// route middleware goes here.
+app.use('/', welcome);
+
+
+// firing up the node server
+app.listen(process.env.PORT || 3000);
