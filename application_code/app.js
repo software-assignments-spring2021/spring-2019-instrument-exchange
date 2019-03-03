@@ -41,4 +41,16 @@ app.use('/', welcome);
 
 
 // firing up the node server
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server listening");
+});
+
+
+// sample functions for mocha test
+function greet() {
+  return "hello";
+}
+
+module.exports = {
+  greet: greet
+};
