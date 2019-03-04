@@ -1,9 +1,12 @@
 const assert = require('chai').assert;
-const test = require('../app');
+const app = require('../app');
 
 describe('Initial Test', function() {
     it('it should return hello', function() {
-        assert(test.greet() === "hello", "hello is hello");
+        assert(app.greet() === "hello", "hello is hello");
+    });
+
+    it('The type should be a string', function() {
+        assert.typeOf(app.greet(), "string");
     });
 });
-
