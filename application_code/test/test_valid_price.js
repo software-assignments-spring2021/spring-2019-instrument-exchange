@@ -1,16 +1,25 @@
-function LoginController() {
+var assert = require('assert');
+var loginController =  require('../../controllers/test_valid_price');
 
-  function isValidPrice(price) {
-  	if(price < 1 || price > 10000){
-      return false;
-    }
-    return true;
-  }
+describe('LoginController', function () {
 
-  return {
-    isValidPrice
-  }
+  describe('isValidPrice', function(){
 
-}
+    it('should return true if valid price', function(){
+      var isValid = loginController.isValidPrice('1000')
+      assert.equal(isValid, true);
+    });
 
-module.exports = LoginController();
+    it('should return false if invalid price', function(){
+      var isValid = loginController.isValidPrice('-5')
+      assert.equal(isValid, false);
+    });
+
+    it('should return false if invalid user id', function(){
+      var isValid = loginController.isValidPrice('100000')
+      assert.equal(isValid, false);
+    });
+
+  });
+
+});
