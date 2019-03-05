@@ -2,9 +2,10 @@
   "name": "instrumentexchange",
   "version": "1.0.0",
   "description": "A web application that serves as a marketplace for renting, buying and selling instruments",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "test-with-coverage": "nyc --reporter=text mocha"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,12 @@
   },
   "devDependencies": {
     "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.0.2",
     "mongoose": "^5.4.16",
     "mongoose-url-slugs": "^1.0.2",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
   }
 }

@@ -109,7 +109,7 @@ module.exports = {
 // making connection to the database
 let dbconf = "mongodb://localhost/InstrumentExchange";
 mongoose.connect(dbconf, {useNewUrlParser: true, useCreateIndex: true})
-    .then ( ()=> console.log("MongoDB Connected!!!"))
+    .then ( ()=> {})
     .catch( err => console.log(err));
 
 
