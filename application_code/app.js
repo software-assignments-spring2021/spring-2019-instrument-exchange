@@ -41,4 +41,23 @@ app.use('/', welcome);
 
 
 // firing up the node server
-app.listen(process.env.PORT || 3000);
+
+const appConnection = function () {
+    app.listen(process.env.PORT || 3000, () => {
+      return "Server Listening";
+    });
+};
+
+appConnection();
+
+
+// sample functions for mocha test
+const greet = function() {
+    return "hello";
+};
+
+// exporting the necessary modules
+module.exports = {
+    greet: greet,
+    appConnection: appConnection,
+};
