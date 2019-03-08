@@ -17,13 +17,14 @@ Monetary transactions through our platform will be securely done through impleme
 This project has yet to reach the stage of a minimum viable product. However, more detailed instructions to come on how to install the project on your local machine. To contribute to our project, kindly clone or fork a git repository on to begin. 
   
 <h3>Prerequisites</h3>   
-Before working on this project, ensure that Node.js, Passport, React, MongoDB as well as Mocha are executable on your local machine.   
+Before working on this project, ensure that Node.js, Passport, React, MongoDB as well as Mocha are executable on your local machine.     
+
 Official links can be found here:  
-- [Node.js] (https://nodejs.org/en/download/) - Backend framework used   
-- [Passport.js] (http://www.passportjs.org/) - Used to ensure login authentication    
-- [React.js] (https://facebook.github.io/react-native/docs/getting-started.html) - Web interface framework    
-- [MongoDB] (https://docs.mongodb.com/manual/administration/install-community/) - Database platform for user data     
-- [Mocha] (https://mochajs.org/#installation) - Unit testing framework    
+- [Node.js](https://nodejs.org/en/download/) - Backend framework used   
+- [Passport.js](http://www.passportjs.org/) - Used to ensure login authentication    
+- [React.js](https://facebook.github.io/react-native/docs/getting-started.html) - Web interface framework    
+- [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) - Database platform for user data     
+- [Mocha](https://mochajs.org/#installation) - Unit testing framework    
     
 <h3>Installing</h3>  
   
