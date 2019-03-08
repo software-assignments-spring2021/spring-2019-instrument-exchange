@@ -17,7 +17,7 @@ Monetary transactions through our platform will be securely done through impleme
 This project has yet to reach the stage of a minimum viable product. However, more detailed instructions to come on how to install the project on your local machine. To contribute to our project, kindly clone or fork a git repository on to begin. 
   
 <h3>Prerequisites</h3>   
-Before working on this project, ensure that Node.js, Passport, React, MongoDB as well as Mocha are executable on your local machine.     
+Before working on this project, ensure that there is a **MongoDB instance** running on the local machine.     
 
 Official links can be found here:  
 - [Node.js](https://nodejs.org/en/download/) - Backend framework used   
@@ -27,10 +27,15 @@ Official links can be found here:
 - [Mocha](https://mochajs.org/#installation) - Unit testing framework    
     
 <h3>Installing</h3>  
-  
-<h2>Running the tests</h2>     
-    
-<h2>Links</h2>  
+Navigate to the `application_code` directory run the command `npm install` to install all the packages required for this project to run.
+
+<h3>Running the tests</h3>     
+Run the command `npm test` to run all the unit tests written. To generate `code coverage` report run the command `npm run test-with-coverage`
+
+<h3>Running the Application</h3>
+Navigate to the `application_code` directory run the command `node app.js`. As mentioned in the **Prerequisite** section, make sure that you already have a **MongoDB instance** running before you run this command.
+
+<h3>Links</h3>  
 
 For more information, please read our [REQUIREMENTS.md](https://github.com/nyu-software-engineering/instrument-exchange/blob/master/REQUIREMENTS.md)
 
