@@ -26,12 +26,25 @@
   },
   "devDependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "*",
     "chai": "^4.2.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.1",
     "istanbul": "^0.4.5",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "flash": "^1.1.0",
     "mocha": "^6.0.2",
+    "mongodb": "*",
     "mongoose": "^5.4.16",
     "mongoose-url-slugs": "^1.0.2",
     "nodemon": "^1.18.10",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
   }
 }
