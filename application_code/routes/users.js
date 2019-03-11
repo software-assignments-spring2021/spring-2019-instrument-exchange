@@ -12,12 +12,14 @@ router.get('/register', (req, res) => res.render('Register'));
 
 // Register Handle
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { firstName, lastName, username, email, password, password2, phoneNumber } = req.body;
   let errors = [];
 
   // Required fields
-  if (!name || !email || !password || !password2) {
+  if (!firstName || !lastName || !username || !email || !password || !password2
+      || !phoneNumber) {
     errors.push({ msg: 'Please fill in all fields' });
+    console.log("Missing");
   }
 
   // Check matching passwords
@@ -28,7 +30,7 @@ router.post('/register', (req, res) => {
   if (errors.length > 0) {
     res.render('register', {
       errors,
-      name,
+      firstName,
       email,
       password,
       password2
@@ -36,13 +38,12 @@ router.post('/register', (req, res) => {
   } else {
     // Validation has passed
       const newUser = new db.Use({
-        firstName: name,
-        lastName: "lastname",
-        username: "username",
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
         email: email,
         password: password,
-        phoneNumber: 10,
-        dateRegistered: Date.now()
+        phoneNumber: phoneNumber
       });
 
       console.log(newUser);
