@@ -37,12 +37,28 @@ router.post('/register', (req, res) => {
     // Validation has passed
       const newUser = new db.Use({
         firstName: name,
+        lastName: "lastname",
+        username: "username",
         email: email,
-        password: password
+        password: password,
+        phoneNumber: 10,
+        dateRegistered: Date.now()
       });
 
       console.log(newUser);
       res.send('Success!');
+
+      // Hash the password
+      bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        // Set password to hashed
+        newUser.password = hash;
+        // Save user
+        newUser.save().then(user => {
+            // res.redirect('/users/login');
+          }).catch(err => console.log(err));
+      }))
+
   }
 
 })

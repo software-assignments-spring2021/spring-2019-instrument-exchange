@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
 const flash = require('flash');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require('path');
 const publicPath = path.resolve(__dirname, 'public');
