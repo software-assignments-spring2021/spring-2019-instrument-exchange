@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
     password: {type:String, required: true},
-    phoneNumber: {type: Number, min: 10, max: 10},
+    phoneNumber: {type: Number, minlength: 10},
     dateRegistered: {type: Date, default: Date.now()}
 });
 
