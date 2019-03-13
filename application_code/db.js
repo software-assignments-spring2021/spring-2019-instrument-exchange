@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const URLSlugs = require('mongoose-url-slugs');
 const bcrypt = require('bcryptjs');
 
-
 // defining schemas for database
 
 const UserSchema = new Schema({
@@ -13,7 +12,7 @@ const UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
     password: {type:String, required: true},
-    phoneNumber: {type: Number, min: 10, max: 10},
+    phoneNumber: {type: Number, minlength: 10},
     dateRegistered: {type: Date, default: Date.now()}
 });
 
@@ -111,18 +110,3 @@ let dbconf = "mongodb://localhost/InstrumentExchange";
 mongoose.connect(dbconf, {useNewUrlParser: true, useCreateIndex: true})
     .then ( ()=> {})
     .catch( err => console.log(err));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
