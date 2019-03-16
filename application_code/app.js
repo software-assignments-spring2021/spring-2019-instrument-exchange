@@ -64,15 +64,16 @@ const register = require('./routes/register');
 const welcome = require('./routes/welcome');
 const login = require('./routes/login');
 const failure = require('./routes/failure');
+const buy_sell = require('./routes/buy_sell');
 
 // route middleware goes here.
 app.use('/', register);
 app.use('/', welcome);
 app.use('/', login);
 app.use('/', failure);
+app.use('/', buy_sell);
 
 // firing up the node server
-
 const appConnection = function () {
     app.listen(process.env.PORT || 3000, () => {
       return "Server Listening";
