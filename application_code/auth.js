@@ -1,6 +1,6 @@
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 // loading the User Model
 const User = require('./db').User;
@@ -9,7 +9,7 @@ const User = require('./db').User;
 module.exports = function (passport) {
     console.log("using local strategy");
     passport.use(
-        new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
+        new LocalStrategy({usernameField: 'email', passwordField: 'password'}, (email, password, done) => {
             // checking if user exists
             console.log("inside local");
             User.findOne({ email: email })

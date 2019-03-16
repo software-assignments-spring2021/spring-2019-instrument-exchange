@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "bcryptjs": "^2.4.3",
+    "bcrypt": "^3.0.4",
     "body-parser": "*",
     "chai": "^4.2.0",
     "connect-flash": "^0.1.1",
