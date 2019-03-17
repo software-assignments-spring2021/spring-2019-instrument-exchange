@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
-const URLSlugs = require('mongoose-url-slugs');
-const bcrypt = require('bcryptjs');
+
 
 // defining schemas for database
 
@@ -95,7 +94,7 @@ const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
 
 
 module.exports = {
-    Use: User,
+    User: User,
     Instrument: Instrument,
     Studio: Studio,
     InstrumentTransaction: InstrumentTransaction,
@@ -108,5 +107,5 @@ module.exports = {
 // making connection to the database
 let dbconf = "mongodb://localhost/InstrumentExchange";
 mongoose.connect(dbconf, {useNewUrlParser: true, useCreateIndex: true})
-    .then ( ()=> {})
+    .then ( ()=> { console.log("MongoDB Connected"); })
     .catch( err => console.log(err));

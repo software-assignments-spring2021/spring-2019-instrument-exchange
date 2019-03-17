@@ -6,18 +6,25 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
 const flash = require('flash');
-const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require('path');
 const publicPath = path.resolve(__dirname, 'public');
 const passport = require('passport');
+
+// static files setup
+app.use(express.static(publicPath));
+
+// BodyParser Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // passport config
 require('./auth')(passport);
 
 // setting session options (code used from online slides)
 const sessionOptions = {
-    secret: 'secret for signing session id',
+    secret: 'secret',
     saveUninitialized: true,
     resave: true
 };
@@ -30,14 +37,6 @@ app.use(passport.session());
 // view engine setup
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-
-// static files setup
-app.use(express.static(publicPath));
-
-// BodyParser Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 // Express Validator
 app.use(expressValidator({
@@ -61,19 +60,20 @@ app.use(expressValidator({
 app.use(flash());
 
 // Getting routes
-const users = require('./routes/users');
+const register = require('./routes/register');
 const welcome = require('./routes/welcome');
 const login = require('./routes/login');
 const failure = require('./routes/failure');
+const buy_sell = require('./routes/buy_sell');
 
 // route middleware goes here.
-app.use('/users', users);
+app.use('/', register);
 app.use('/', welcome);
 app.use('/', login);
 app.use('/', failure);
+app.use('/', buy_sell);
 
 // firing up the node server
-
 const appConnection = function () {
     app.listen(process.env.PORT || 3000, () => {
       return "Server Listening";
