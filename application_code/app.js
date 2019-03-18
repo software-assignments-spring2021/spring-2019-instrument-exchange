@@ -65,6 +65,7 @@ const welcome = require('./routes/welcome');
 const login = require('./routes/login');
 const failure = require('./routes/failure');
 const buy_sell = require('./routes/buy_sell');
+const studio_listing = require('./routes/list_studio');
 
 // route middleware goes here.
 app.use('/', register);
@@ -72,6 +73,7 @@ app.use('/', welcome);
 app.use('/', login);
 app.use('/', failure);
 app.use('/', buy_sell);
+app.use('/', studio_listing);
 
 // firing up the node server
 const appConnection = function () {
