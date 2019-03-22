@@ -5,3 +5,4 @@ application_code/.nyc_output/
 .DS_Store
 application_code/.DS_store
 .DS_Store
+application_code/public/uploads
