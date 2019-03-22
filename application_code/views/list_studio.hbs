@@ -8,32 +8,29 @@
     </div>
 {{/if}}
 
-<form method="post" action="/list_studio" enctype="multipart/form-data">
+<div class="container">
+    <form method="post" action="/list_studio" enctype="multipart/form-data">
 
-    <div class="form-group">
-        <label for="exampleInputLocation">Studio Location</label>
-        <input type="text" name="location" class="form-control" id="studio-location-input" placeholder="Enter Studio Location">
-    </div>
+        <div class="form-group">
+            <label for="exampleInputLocation">Studio Location</label>
+            <input type="text" name="location" class="form-control" id="studio-location-input" placeholder="Enter Studio Location">
+        </div>
 
-    <div class="form-group">
-        <label for="exampleInputPrice">Rental Price (Per day)</label>
-        <input type="Number" name="rental_price" class="form-control" id="studio-rental-price" placeholder="Enter Rental Price">
-    </div>
+        <div class="form-group">
+            <label for="exampleInputPrice">Rental Price (Per day)</label>
+            <input type="Number" name="rental_price" class="form-control" id="studio-rental-price" placeholder="Enter Rental Price">
+        </div>
 
-    <div class="form-group">
-        <label for="exampleInputImages">Upload Images</label>
-        <input type="file" name="studio_pictures" class="form-control" id="exampleInputImages" multiple>
-    </div>
+        <div class="form-group">
+            <label for="exampleInputImages">Upload Images</label>
+            <input type="file" name="studio_pictures" class="form-control" id="exampleInputImages" multiple>
+        </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlDescription">Please provide a description of your studio</label>
-        <textarea class="form-control" name="description" id="exampleFormControlDescription" rows="3"></textarea>
-    </div>
+        <div class="form-group">
+            <label for="exampleFormControlDescription">Please provide a description of your studio</label>
+            <textarea class="form-control" name="description" id="exampleFormControlDescription" rows="3"></textarea>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<!--<form method="post" action="/submit_studio_desc">-->
-    <!---->
-    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-<!--</form>-->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
