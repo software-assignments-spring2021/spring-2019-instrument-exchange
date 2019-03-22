@@ -8,15 +8,15 @@ const StudioListing = require('../db').StudioListing;
 const storage = multer.diskStorage({
     destination: './public/uploads/studios',
     filename: function (req, file, cb) {
-        cb(null, req.email + '-' + file.fieldname + path.extname(file.originalname));
+        cb(null, req.user._id + '-' + Date.now() + path.extname(file.originalname));
     }
 });
 
 const upload = multer({
     storage: storage,
-    fileFilter: function (req, file, cb) {
-        checkType(file, cb);
-    }
+    // fileFilter: function (req, file, cb) {
+    //     checkType(file, cb);
+    // }
 }).array('studio_pictures', 3); // requiring at least three pictures
 
 
