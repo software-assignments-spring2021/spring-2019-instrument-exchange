@@ -10,7 +10,8 @@ router.get('/login', function (req, res) {
 
 router.post('/authenticate',
     passport.authenticate('local', { successRedirect: '/buy_sell',
-        failureRedirect: '/failure' }));
+        failureRedirect: '/failure' })
+);
 
 
 // router.post('/authenticate',
