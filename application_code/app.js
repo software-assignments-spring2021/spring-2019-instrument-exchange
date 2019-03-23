@@ -73,7 +73,7 @@ const logout = require('./routes/logout');
 const failure = require('./routes/failure');
 const buySell = require('./routes/buy_sell');
 const sellerPortal = require('./routes/seller_portal');
-const studio_listing = require('./routes/list_studio');
+const studioListing = require('./routes/list_studio');
 
 // route middleware goes here.
 app.use('/', register);
@@ -82,7 +82,7 @@ app.use('/', login);
 app.use('/', logout);
 app.use('/', failure);
 app.use('/', buySell);
-app.use('/', studio_listing);
+app.use('/', studioListing);
 app.use('/', sellerPortal);
 
 // firing up the node server
