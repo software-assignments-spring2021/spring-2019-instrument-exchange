@@ -36,3 +36,8 @@ html {
 .card-deck .card {
   min-width: 220px;
 }
+
+/* buy_sell.hbs*/
+#buy-sell-selection {
+    text-align: center;
+}
