@@ -32,7 +32,7 @@ const InstrumentSchema = new Schema({
 
 const StudioSchema = new Schema({
     address: {type: String, required: true},
-    pictures: {types: [String]},
+    pictures: [String],
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true}
 });

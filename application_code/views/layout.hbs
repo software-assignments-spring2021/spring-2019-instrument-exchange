@@ -15,12 +15,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/login">Login</a>
+                {{#if isAuthenticated}}
+                    <a class="nav-item nav-link" href="/seller_portal">Seller Portal</a>
+                    <a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a>
+                    <a class="nav-item nav-link" href="/logout">Logout</a>
+                {{else}}
+                    <a class="nav-item nav-link" href="/register">Register</a>
+                    <a class="nav-item nav-link" href="/login">Login</a>
+                {{/if}}
             </div>
         </div>
     </nav>
 
-  {{{body}}}
+    <div class="container">
+        {{{body}}}
+    </div>
 
-</body>
+<!-- autocomplete api-->
+<script type="text/javascript">
+    function activateStudioLocation() {
+        let locationInput = document.querySelector("#studio-location-input");
+        let complete = new google.maps.places.Autocomplete(locationInput);
+    }
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr7hgVxpSfIc4kO_Rht_NmRtqRHbe56mM&libraries=places&callback=activateStudioLocation"></script>
+
+</div>
