@@ -58,6 +58,8 @@ router.post('/list_studio', function (req, res) {
             if (req.body.location === "" || req.body.rental_price === "" || req.body.description === "") {
                 res.render('list_studio', {error : "All fields must be filled out"});
             }
+
+            // creating the studio model and saving it to database.
             const newStudio = new Studio({
                 address: req.body.location,
                 pictures: pictures,
@@ -81,7 +83,7 @@ router.post('/list_studio', function (req, res) {
                         .then(listing => {
                             console.log("listing created");
                             console.log(listing);
-                            res.redirect('/studio_list');
+                            res.redirect('/seller_portal');
                         })
                         .catch(err=> {
                             console.log(err);
