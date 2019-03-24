@@ -74,6 +74,7 @@ const failure = require('./routes/failure');
 const buySell = require('./routes/buy_sell');
 const sellerPortal = require('./routes/seller_portal');
 const studioListing = require('./routes/list_studio');
+// const instrumentListing = require('./routes/list_instrument');
 
 // route middleware goes here.
 app.use('/', register);
@@ -82,8 +83,10 @@ app.use('/', login);
 app.use('/', logout);
 app.use('/', failure);
 app.use('/', buySell);
-app.use('/', studioListing);
 app.use('/', sellerPortal);
+app.use('/', studioListing);
+// app.use('/', instrumentListing);
+
 
 // firing up the node server
 const appConnection = function () {
