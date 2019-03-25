@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/nyu-software-engineering/instrument-exchange.svg?branch=master)](https://travis-ci.com/nyu-software-engineering/instrument-exchange)
 <h1>README</h1>  
   
 <h3>History</h3>  
