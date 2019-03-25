@@ -1,25 +1,22 @@
 var assert = require('assert');
-var loginController =  require('../../controllers/test_valid_price');
+const db = require('../db');
 
-describe('LoginController', function () {
 
-  describe('isValidPrice', function(){
 
-    it('should return true if valid price', function(){
-      var isValid = loginController.isValidPrice('1000')
-      assert.equal(isValid, true);
-    });
+describe('Testing Empty Password', function(){
+  it('should return true if non-empty', function(){
+      user = db.User();
+      user.password = "password";
+      assert.equal(user.password  !== "", true)
+  });
 
-    it('should return false if invalid price', function(){
-      var isValid = loginController.isValidPrice('-5')
-      assert.equal(isValid, false);
-    });
-
-    it('should return false if invalid user id', function(){
-      var isValid = loginController.isValidPrice('100000')
-      assert.equal(isValid, false);
-    });
+  it('should return false if empty', function(){
+      user = db.User();
+      user.password = "";
+      assert.equal(user.password  !== "", false)
 
   });
 
+
 });
+

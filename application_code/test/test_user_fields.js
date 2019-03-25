@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 const db = require('../db');
 
 describe('Testing user fields', function() {
-    var user = new db.Use();
+    var user = new db.User();
     user.firstName = 'Jonathan';
 
     it('Firstname should equal given string', function() {
