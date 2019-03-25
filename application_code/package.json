@@ -4,6 +4,7 @@
   "description": "A web application that serves as a marketplace for renting, buying and selling instruments",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha --exit",
     "test-with-coverage": "nyc --reporter=text mocha"
   },
