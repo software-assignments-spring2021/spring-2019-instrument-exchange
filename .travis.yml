@@ -1,6 +1,8 @@
 language: node_js
 node_js:
  - "11.10.0"
+services:
+  - MongoDB
 before_install:
   - cd application_code
   - npm i -g npm@6.7.0
