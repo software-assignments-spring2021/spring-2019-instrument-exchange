@@ -36,7 +36,7 @@ function checkType(file, cb) {
 // authenticated view
 router.get('/studio_list', function (req, res) {
     if (req.user) res.render('list_studio', {  });
-    else res.redirect('/failure');
+    else res.render("login_required");
 });
 
 
