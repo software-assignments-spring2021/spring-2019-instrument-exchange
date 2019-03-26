@@ -3,14 +3,13 @@
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{error}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"></span>
         </button>
     </div>
 {{/if}}
 
 <div class="container">
     <form method="post" action="/list_studio" enctype="multipart/form-data">
-
         <div class="form-group">
             <label for="exampleInputLocation">Studio Location</label>
             <input type="text" name="location" class="form-control" id="studio-location-input" placeholder="Enter Studio Location">

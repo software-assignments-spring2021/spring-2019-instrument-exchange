@@ -10,27 +10,28 @@ router.get('/register', (req, res) => res.render('Register'));
 // Register Handle
 router.post('/register_user', (req, res) => {
     const { firstName, lastName, username, email, password, password2, phoneNumber } = req.body;
-    let errors = [];
 
-    // Required fields
-    if (!firstName || !lastName || !username || !email || !password || !password2
-        || !phoneNumber) {
-        errors.push({ msg: 'Please fill in all fields' });
-        console.log("Missing");
-    }
+    req.check('firstName', 'First name is required').notEmpty();
+    req.check('lastName', 'Last name is required').notEmpty();
+    req.check('email', 'Email is required').notEmpty();
+    req.check('email', 'Email is not valid').isEmail();
+    req.check('username', 'Username is required').notEmpty();
+    req.check('password', 'Password is required').notEmpty();
+    req.check('password2', 'Passwords do not match').equals(req.body.password);
 
-    // Check matching passwords
-    if (password != password2) {
-        errors.push({ msg: 'Passwords do not match' });
-    }
+    let errors = req.validationErrors();
 
-    if (errors.length > 0) {
+    // Check for all errors
+    if (errors) {
         res.render('register', {
-            errors,
+            errors:errors,
             firstName,
+            lastName,
+            username,
             email,
             password,
-            password2
+            password2,
+            phoneNumber
         });
     } else {
         // Validation has passed

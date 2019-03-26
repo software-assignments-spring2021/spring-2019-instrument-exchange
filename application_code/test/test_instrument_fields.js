@@ -12,5 +12,4 @@ describe('Testing instrument fields', function(){
     it ('Instrument weight should equal given int', function() {
         assert(instrument.weight == 10, 'Should equal given weight');
     })
-
 })

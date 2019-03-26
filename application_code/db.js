@@ -19,14 +19,13 @@ const InstrumentSchema = new Schema({
     name: {type: String, required: true},
     category: {
         type: String,
-        enum: ["String", "Brass", "Woodwind", "Percussion"]
+        enum: ["String", "Brass", "Woodwind", "Percussion", "Synthesizer"]
     },
-    dimension: {type: String},
     weight: {type: Number, required: true},
-    pictures: {types: [String]},
+    pictures: [String],
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
-    buyingPrice: {type: Number, required: true}
+    purchasePrice: {type: Number, required: true}
 
 });
 
