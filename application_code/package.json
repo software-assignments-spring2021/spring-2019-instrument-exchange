@@ -4,7 +4,8 @@
   "description": "A web application that serves as a marketplace for renting, buying and selling instruments",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
+    "start": "node app.js",
+    "test": "mocha --exit",
     "test-with-coverage": "nyc --reporter=text mocha"
   },
   "repository": {
@@ -26,19 +27,19 @@
     "multer": "^1.4.1"
   },
   "devDependencies": {
-    "bcryptjs": "^2.4.3",
     "bcrypt": "^3.0.4",
+    "bcryptjs": "^2.4.3",
     "body-parser": "*",
     "chai": "^4.2.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",
-    "istanbul": "^0.4.5",
     "express": "*",
     "express-handlebars": "*",
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
     "flash": "^1.1.0",
+    "istanbul": "^0.4.5",
     "mocha": "^6.0.2",
     "mongodb": "*",
     "mongoose": "^5.4.16",

@@ -4,7 +4,8 @@ const passport = require('passport');
 
 // authenticated route
 router.get('/seller_portal', function (req, res) {
-    res.render("seller_portal");
+    if (req.user) res.render("seller_portal");
+    else res.render("login_required");
 });
 
 module.exports = router;

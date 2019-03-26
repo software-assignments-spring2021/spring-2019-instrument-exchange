@@ -1,8 +1,7 @@
 application_code/.idea/
 application_code/node_modules/
 application_code/package-lock.json
-application_code/.nyc_output/
-.DS_Store
-application_code/.DS_store
-.DS_Store
 application_code/public/uploads
+.idea/
+*.DS_Store
+.DS_Store

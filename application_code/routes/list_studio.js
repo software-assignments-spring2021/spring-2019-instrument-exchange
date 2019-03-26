@@ -14,7 +14,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-
+    // fileFilter: function (req, file, cb) {
+    //     checkType(file, cb);
+    // }
 }).array('studio_pictures', 3); // requiring at least three pictures
 
 
@@ -33,12 +35,10 @@ function checkType(file, cb) {
 
 // authenticated view
 router.get('/studio_list', function (req, res) {
-    if (req.user) {
-      res.render('list_studio', {  });
-      console.log("LIST STUDIO RENDERED");
-    }
-    else res.redirect('/failure');
+    if (req.user) res.render('list_studio', {  });
+    else res.render("login_required");
 });
+
 
 
 router.post('/list_studio', function (req, res) {
@@ -52,7 +52,6 @@ router.post('/list_studio', function (req, res) {
             // error checking
             // checking if at least three pictures are included.
             if (pictures.length < 3) {
-                console.log("UH OH FROM STUDIO");
                 res.render('list_studio', {error: "You need to select at least 3 images"})
             }
             // check for empty field in the form
