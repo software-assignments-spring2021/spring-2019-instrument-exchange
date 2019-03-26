@@ -13,5 +13,5 @@ cache:
 script:
   - npm run test
 notifications:
-  slack: nyu-agile-software:s94WDVPE30UtssTu71olrrrQ#instrument_exchange
+  slack: nyu-agile-software:04E7Sc8kwphZ6MOgPVlchAMe#instrument_exchange
 
