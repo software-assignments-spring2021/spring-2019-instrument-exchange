@@ -14,10 +14,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    // fileFilter: function (req, file, cb) {
-    //     checkType(file, cb);
-    // }
-}).array('studio_pictures', 3); // requiring at least three pictures
+    fileFilter: function (req, file, cb) {
+        checkType(file, cb);
+    }
+}).array('studio_pictures', 10); // can upload maximum of 10 images
 
 
 function checkType(file, cb) {
@@ -28,7 +28,7 @@ function checkType(file, cb) {
     if (ext && mimetype) {
         return cb(null, true);
     } else {
-        cb("Images Only!");
+        cb("Images Only");
     }
 }
 
@@ -43,56 +43,61 @@ router.get('/studio_list', function (req, res) {
 
 router.post('/list_studio', function (req, res) {
     upload(req, res, (err) => {
-        if (err) console.log(err);
-        else {
+        if (err) {
+            if (err.code === "LIMIT_UNEXPECTED_FILE")
+                res.render('list_studio', {error: "Cannot upload more than 10 images"});
+            else if (err === "Images Only")
+                res.render('list_studio', {error: "Uploaded files have to one of these types (jpeg | jpg | png | gif)"});
+            else
+                console.log(err);
+        } else {
             // gathering necessary info and creating a studio model.
-            let pictures = req.files.map( ele => {
+            let pictures = req.files.map(ele => {
                 return ele.filename;
             });
+
             // error checking
-            // checking if at least three pictures are included.
+            // checking if at least three pictures are included or all the fields are filled.
             if (pictures.length < 3) {
+                console.log("number of pictures less than 3 ", pictures.length);
                 res.render('list_studio', {error: "You need to select at least 3 images"})
-            }
-            // check for empty field in the form
-            if (req.body.location === "" || req.body.rental_price === "" || req.body.description === "") {
-                res.render('list_studio', {error : "All fields must be filled out"});
-            }
+            } else if (req.body.location === "" || req.body.rental_price === "" || req.body.description === "") {
+                res.render('list_studio', {error: "All fields must be filled out"});
+            } else {
+                const newStudio = new Studio({
+                    address: req.body.location,
+                    pictures: pictures,
+                    description: req.body.description,
+                    rentalPrice: req.body.rental_price
+                });
 
-            // creating the studio model and saving it to database.
-            const newStudio = new Studio({
-                address: req.body.location,
-                pictures: pictures,
-                description: req.body.description,
-                rentalPrice: req.body.rental_price
-            });
-
-            newStudio.save()
-                .then(studio => {
-                    console.log("new studio created");
-                    console.log(studio);
-                    // creating a model for studiolisting
-                    const newStudioListing = new StudioListing({
-                        studioId: studio._id.toString(),
-                        sellerId: req.user._id.toString(),
-                        booked: []
-                    });
-
-                    // saving the entry in the database.
-                    newStudioListing.save()
-                        .then(listing => {
-                            console.log("listing created");
-                            console.log(listing);
-                            res.redirect('/seller_portal');
-                        })
-                        .catch(err=> {
-                            console.log(err);
+                newStudio.save()
+                    .then(studio => {
+                        console.log("new studio created");
+                        console.log(studio);
+                        // creating a model for studiolisting
+                        const newStudioListing = new StudioListing({
+                            studioId: studio._id.toString(),
+                            sellerId: req.user._id.toString(),
+                            booked: []
                         });
 
-                })
-                .catch( err => {
-                    console.log(err);
-                });
+                        // saving the entry in the database.
+                        newStudioListing.save()
+                            .then(listing => {
+                                console.log("listing created");
+                                console.log(listing);
+                                res.redirect('/seller_portal');
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
         }
     });
 
