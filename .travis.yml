@@ -15,5 +15,5 @@ script:
 notifications:
   slack: 
    rooms: 
-    -nyu-agile-software:04E7Sc8kwphZ6MOgPVlchAMe
-    -nyu-agile-software:s94WDVPE30UtssTu71olrrrQ
+    -nyu-agile-software:s94WDVPE30UtssTu71olrrrQ#instrument-exchange
+    -nyu-agile-software:s94WDVPE30UtssTu71olrrrQ#travis-results
