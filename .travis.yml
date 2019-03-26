@@ -13,7 +13,5 @@ cache:
 script:
   - npm run test
 notifications:
-  slack: 
-   rooms: 
-    -nyu-agile-software:s94WDVPE30UtssTu71olrrrQ#instrument-exchange
-    -nyu-agile-software:s94WDVPE30UtssTu71olrrrQ#travis-results
+  slack: nyu-agile-software:s94WDVPE30UtssTu71olrrrQ#instrument_exchange
+
