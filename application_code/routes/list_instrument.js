@@ -60,8 +60,8 @@ router.post('/list_instrument', function (req, res) {
 
             // error checking
             // checking if at least three pictures are included or if all the fields are filled.
-            if (pictures.length < 3) {
-                res.render('list_instrument', {error: "You need to select at least 3 images"})
+            if (pictures.length === 0) {
+                res.render('list_instrument', {error: "You need to select at least one image"})
             } else if (req.body.name === "" || req.body.category === "" || req.body.weight === "" ||
             req.body.rental_price === "" || req.body.purchase_price === "" || req.body.description === "") {
                 res.render('list_instrument', {error : "All fields must be filled out"});

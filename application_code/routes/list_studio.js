@@ -40,8 +40,8 @@ router.get('/studio_list', function (req, res) {
 });
 
 
-
 router.post('/list_studio', function (req, res) {
+    // console.log("the files are ", req.files);
     upload(req, res, (err) => {
         if (err) {
             if (err.code === "LIMIT_UNEXPECTED_FILE")
@@ -51,19 +51,17 @@ router.post('/list_studio', function (req, res) {
             else
                 console.log(err);
         } else {
-            // gathering necessary info and creating a studio model.
+            // error checking
+            // checking if at least one picture is included and all the fields are filled.
             let pictures = req.files.map(ele => {
                 return ele.filename;
             });
-
-            // error checking
-            // checking if at least three pictures are included or all the fields are filled.
-            if (pictures.length < 3) {
-                console.log("number of pictures less than 3 ", pictures.length);
-                res.render('list_studio', {error: "You need to select at least 3 images"})
+            if (pictures.length === 0) {
+                res.render('list_studio', {error: "You need to select at least one picture"});
             } else if (req.body.location === "" || req.body.rental_price === "" || req.body.description === "") {
                 res.render('list_studio', {error: "All fields must be filled out"});
             } else {
+
                 const newStudio = new Studio({
                     address: req.body.location,
                     pictures: pictures,
