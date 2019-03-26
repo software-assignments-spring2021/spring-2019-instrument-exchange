@@ -61,13 +61,14 @@ router.post('/list_instrument', function (req, res) {
             // creating the instrument model and saving it to database.
             const newInstrument = new Instrument({
                 name: req.body.name,
-                category: req.body.category,
+                category: req.body.chosenCategory,
                 weight: req.body.weight,
                 pictures: pictures,
                 description: req.body.description,
                 rentalPrice: req.body.rental_price,
                 purchasePrice: req.body.purchase_price
             });
+
 
             newInstrument.save()
                 .then(instrument => {
