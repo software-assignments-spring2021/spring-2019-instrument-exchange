@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 
 // defining schemas for database
+var date = new Date(Date.now());
+var formattedDate = date.toString().split(" ");
 
 const UserSchema = new Schema({
     firstName: {type: String, required: true},
@@ -12,7 +14,12 @@ const UserSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type:String, required: true},
     phoneNumber: {type: Number, minlength: 10},
-    dateRegistered: {type: Date, default: Date.now()}
+    dateRegistered: {type: Date, required: true},
+    weekdayRegistered: {type: String, required: true},
+    monthRegistered: {type: String, required: true},
+    numDateRegistered: {type: String, required: true},
+    yearRegistered: {type: String, required: true},
+    timeRegistered: {type: String, required: true}
 });
 
 const InstrumentSchema = new Schema({

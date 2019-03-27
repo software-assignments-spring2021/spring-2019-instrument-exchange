@@ -3,9 +3,11 @@ const router = express.Router();
 
 // Profile
 router.get('/profile', function (req, res){
-  res.render('profile',
-  {firstName: req.user.firstName, lastName: req.user.lastName, username: req.user.username,
-  email: req.user.email, phoneNumber: req.user.phoneNumber, dateRegistered: req.user.dateRegistered});
+  if (req.user) {
+    res.render('profile', {user: req.user});
+  } else {
+    res.render('login_required');
+  }
 });
 
 
