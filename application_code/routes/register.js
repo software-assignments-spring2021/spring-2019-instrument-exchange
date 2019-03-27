@@ -35,13 +35,22 @@ router.post('/register_user', (req, res) => {
         });
     } else {
         // Validation has passed
+        var date = new Date(Date.now());
+        var formattedDate = date.toString().split(" ");
+
         const newUser = new db.User({
             firstName: firstName,
             lastName: lastName,
             username: username,
             email: email,
             password: password,
-            phoneNumber: phoneNumber
+            phoneNumber: phoneNumber,
+            dateRegistered: date,
+            weekdayRegistered: formattedDate[0],
+            monthRegistered: formattedDate[1],
+            numDateRegistered: formattedDate[2],
+            yearRegistered: formattedDate[3],
+            timeRegistered: formattedDate[4]
         });
 
         // Hash the password
