@@ -80,7 +80,6 @@ const sellerPortal = require('./routes/seller_portal');
 const studioListing = require('./routes/list_studio');
 const instrumentListing = require('./routes/list_instrument');
 const profile = require('./routes/profile');
-// to remove 
 const currentListings = require('./routes/current_listings');
 
 // route middleware goes here.
