@@ -68,9 +68,11 @@ router.post('/list_instrument', function (req, res) {
             } else {
                 const newInstrument = new Instrument({
                     name: req.body.name,
+                    address: req.body.location,
                     category: req.body.chosenCategory,
                     weight: req.body.weight,
                     pictures: pictures,
+                    coverPicture: pictures[0],
                     description: req.body.description,
                     rentalPrice: req.body.rental_price,
                     purchasePrice: req.body.purchase_price

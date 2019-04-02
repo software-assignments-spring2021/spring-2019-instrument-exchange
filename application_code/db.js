@@ -28,8 +28,10 @@ const InstrumentSchema = new Schema({
         type: String,
         enum: ["String", "Brass", "Woodwind", "Percussion", "Synthesizer"]
     },
+    address: {type: String, required: true},
     weight: {type: Number, required: true},
     pictures: [String],
+    coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
     purchasePrice: {type: Number, required: true}
@@ -39,6 +41,7 @@ const InstrumentSchema = new Schema({
 const StudioSchema = new Schema({
     address: {type: String, required: true},
     pictures: [String],
+    coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true}
 });

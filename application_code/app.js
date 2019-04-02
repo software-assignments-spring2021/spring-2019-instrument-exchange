@@ -14,6 +14,10 @@ const passport = require('passport');
 // static files setup
 app.use(express.static(publicPath));
 
+publicDir = path.join(__dirname,'/public');
+app.use(express.static(publicDir));
+app.use('/static', express.static(path.join(__dirname, 'public')))
+//app.use(express.static('eevee.png')); 
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -76,6 +80,7 @@ const sellerPortal = require('./routes/seller_portal');
 const studioListing = require('./routes/list_studio');
 const instrumentListing = require('./routes/list_instrument');
 const profile = require('./routes/profile');
+const currentListings = require('./routes/current_listings');
 
 // route middleware goes here.
 app.use('/', register);
@@ -88,7 +93,7 @@ app.use('/', sellerPortal);
 app.use('/', studioListing);
 app.use('/', instrumentListing);
 app.use('/', profile);
-
+app.use('/', currentListings);
 
 // firing up the node server
 const appConnection = function () {
