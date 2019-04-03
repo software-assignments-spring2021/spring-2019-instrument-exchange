@@ -30,24 +30,26 @@ router.get('/instrument_listings_buyer', function (req, res) {
 });
 
 
-router.get("/studio_detail/:id", function(req, res) {
+router.get("/studio_detail/:role/:id", function(req, res) {
     if (req.user) {
         const studioId = req.params.id;
+        buyer = req.params.role === "buyer";
         Studio.findOne({"_id": studioId})
             .then(studio => {
-                res.render("studio_detail", {studio: studio});
+                res.render("studio_detail", {studio: studio, buyer: buyer});
             })
             .catch(err => console.log(err));
     }  else res.render("login_required");
 });
 
 
-router.get("/instrument_detail/:id", function(req, res) {
+router.get("/instrument_detail/:role/:id", function(req, res) {
     if (req.user) {
         const instrumentId = req.params.id;
+        buyer = req.params.role === "buyer";
         Instrument.findOne({"_id": instrumentId})
             .then(instrument => {
-                res.render("instrument_detail", {instrument: instrument});
+                res.render("instrument_detail", {instrument: instrument, buyer: buyer});
             })
             .catch(err => console.log(err));
     }  else res.render("login_required");
