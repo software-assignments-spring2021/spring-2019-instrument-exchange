@@ -1,0 +1,12 @@
+<div class="background">
+    <div class="image-carousel">
+        {{#each studio.pictures}}
+            <img class="studio-picture" src="/uploads/studios/{{ this }}">
+        {{/each}}
+    </div>
+    <p> <strong>Location</strong>: {{ studio.address }}</p>
+    <p> <strong>Rental Price</strong>: ${{ studio.rentalPrice }} per Day</p>
+    <p> <strong>Studio Description</strong>: {{ studio.description }} </p>
+    <input id="listing-date-range"> <br>
+    <button><a href="#">Rent Studio</a></button>
+</div>
