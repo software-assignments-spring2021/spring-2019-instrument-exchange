@@ -14,7 +14,6 @@
             <div class="navbar-css">
                 <ul>
                 <li><a class="navbar-brand" href="/">Instrument Exchange</a></li>
-                    <div class="navbar-nav">
                         {{#if isAuthenticated}}
                         <div class="dropdown">
                             <li><a class="nav-item nav-link" href="/seller_portal">Seller Portal</a></li>
@@ -26,15 +25,26 @@
                                         <li><a href="/instrument_list">List An Instrument</a></li>
                                     </div>
                                 </ul>
-                            </div>
+                        </div>
+                        <div class="dropdown">
                             <li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>
+                            <ul>
+                                <div class="dropdown-content">
+                                    <li><a href="#">Browse Studios</a></li>
+                                    <li><a href="#">Browse Instruments</a></li>
+                                    <li><a href="#">Shopping Cart</a></li>
+                                </div>
+                            </ul>
+                        </div>
+                            <!--<li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>-->
                             <li><a class="nav-item nav-link" href="/profile">Profile</a></li>
                             <li><a class="nav-item nav-link" href="/logout">Logout</a></li>
-                        </ul>
+                </ul>
                         {{else}}
                             <li><a class="nav-item nav-link" href="/register">Register</a></li>
                             <li><a class="nav-item nav-link" href="/login">Login</a></li>
                         {{/if}}
+
                 </div>
             </div>
         </div>
