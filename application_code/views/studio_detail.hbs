@@ -7,6 +7,8 @@
     <p> <strong>Location</strong>: {{ studio.address }}</p>
     <p> <strong>Rental Price</strong>: ${{ studio.rentalPrice }} per Day</p>
     <p> <strong>Studio Description</strong>: {{ studio.description }} </p>
+    {{#if buyer}}
     <input id="listing-date-range"> <br>
     <button><a href="#">Rent Studio</a></button>
+    {{/if}}
 </div>

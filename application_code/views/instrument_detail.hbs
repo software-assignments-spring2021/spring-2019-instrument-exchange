@@ -13,8 +13,10 @@
     <p> <strong>Rental Price</strong>: ${{ instrument.rentalPrice }} per Day</p>
     <p> <strong>Purchase Price</strong>: ${{ instrument.purchasePrice }}</p>
     <p> <strong>Studio Description</strong>: {{ instrument.description }} </p>
+    {{#if buyer}}
     <label for="listing-date-range">Rental Period</label>
     <input id="listing-date-range"><br>
     <button><a href="#">Rent Instrument</a></button>
     <button><a href="#">Purchase Instrument</a></button>
+    {{/if}}
 </div>
