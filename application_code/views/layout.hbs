@@ -2,27 +2,39 @@
 <html lang="en">
 <head>
     <title>Instrument Exchange</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Berkshire+Swash|Boogaloo|Cormorant+Garamond|Pacifico|Pontano+Sans|Neucha" rel="stylesheet">
+    
+    
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Instrument Exchange</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                {{#if isAuthenticated}}
-                    <a class="nav-item nav-link" href="/seller_portal">Seller Portal</a>
-                    <a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a>
-                    <a class="nav-item nav-link" href="/logout">Logout</a>
-                {{else}}
-                    <a class="nav-item nav-link" href="/register">Register</a>
-                    <a class="nav-item nav-link" href="/login">Login</a>
-                {{/if}}
+            <div class="navbar-css">
+                <ul>
+                <li><a class="navbar-brand" href="/">Instrument Exchange</a></li>
+                    <div class="navbar-nav">
+                        {{#if isAuthenticated}}
+                        <div class="dropdown">
+                            <li><a class="nav-item nav-link" href="/seller_portal">Seller Portal</a></li>
+                                <ul>
+                                    <div class="dropdown-content">
+                                        <li><a href="/profile">Profile</a></li>
+                                        <li><a href="/current_listings">Current Listings</a></li>
+                                        <li><a href="/studio_list">List A Studio</a></li>
+                                        <li><a href="/instrument_list">List An Instrument</a></li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>
+                            <li><a class="nav-item nav-link" href="/logout">Logout</a></li>
+                        </ul>
+                        {{else}}
+                            <li><a class="nav-item nav-link" href="/register">Register</a></li>
+                            <li><a class="nav-item nav-link" href="/login">Login</a></li>
+                        {{/if}}
+                </div>
             </div>
         </div>
     </nav>
