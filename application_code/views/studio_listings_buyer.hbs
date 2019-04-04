@@ -1,0 +1,19 @@
+
+
+{{#if studios}}
+    <p class="lead">Studios Found</p>
+    <div class="card-columns">
+        {{#each studios}}
+            <div class="card">
+                <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.coverPicture }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ this.address }}</h5>
+                    <p class="card-text">{{ this.description }}</p>
+                    <button><a href="/studio_detail/buyer/{{ this._id }}">Rent</a></button>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{else}}
+    <p class="lead">Unfortunately we could not find any Studios. PLease check back.</p>
+{{/if}}

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <title>Instrument Exchange</title>
-    
-    
+
+    <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/daterangepicker.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 
@@ -14,7 +16,6 @@
             <div class="navbar-css">
                 <ul>
                 <li><a class="navbar-brand" href="/">Instrument Exchange</a></li>
-                    <div class="navbar-nav">
                         {{#if isAuthenticated}}
                         <div class="dropdown">
                             <li><a class="nav-item nav-link" href="/seller_portal">Seller Portal</a></li>
@@ -26,15 +27,27 @@
                                         <li><a href="/instrument_list">List An Instrument</a></li>
                                     </div>
                                 </ul>
-                            </div>
+                        </div>
+                        <div class="dropdown">
                             <li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>
+                            <ul>
+                                <div class="dropdown-content">
+                                    <li><a href="/studio_listings_buyer">Browse Studios</a></li>
+                                    <li><a href="/instrument_listings_buyer">Browse Instruments</a></li>
+                                    <li><a href="#">Shopping Cart</a></li>
+                                </div>
+                            </ul>
+                        </div>
+                            <!--<li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>-->
                             <li><a class="nav-item nav-link" href="/profile">Profile</a></li>
+                            <li><a class="nav-item nav-link" href="#">Shopping Cart</a></li>
                             <li><a class="nav-item nav-link" href="/logout">Logout</a></li>
-                        </ul>
+                </ul>
                         {{else}}
                             <li><a class="nav-item nav-link" href="/register">Register</a></li>
                             <li><a class="nav-item nav-link" href="/login">Login</a></li>
                         {{/if}}
+
                 </div>
             </div>
         </div>
@@ -45,6 +58,9 @@
     </div>
 
 
+<script type="text/javascript" src="/javascript/moment.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <!-- autocomplete api-->
 <script type="text/javascript">
     function activateLocation() {
@@ -54,5 +70,27 @@
 
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr7hgVxpSfIc4kO_Rht_NmRtqRHbe56mM&libraries=places&callback=activateLocation"></script>
+
+<!--for carousel-->
+<script type="text/javascript" src="/javascript/slick.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.image-carousel').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true
+    });
+    });
+</script>
+
+<!--for date range picker-->
+<script type="text/javascript" src="/javascript/jquery.daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#listing-date-range').dateRangePicker({});
+    });
+</script>
 </body>
 </html>

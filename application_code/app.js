@@ -81,6 +81,7 @@ const studioListing = require('./routes/list_studio');
 const instrumentListing = require('./routes/list_instrument');
 const profile = require('./routes/profile');
 const currentListings = require('./routes/current_listings');
+const showListingsBuyer = require('./routes/show_listings_buyer');
 
 // route middleware goes here.
 app.use('/', register);
@@ -94,7 +95,7 @@ app.use('/', studioListing);
 app.use('/', instrumentListing);
 app.use('/', profile);
 app.use('/', currentListings);
-
+app.use('/', showListingsBuyer);
 // firing up the node server
 const appConnection = function () {
     app.listen(process.env.PORT || 3000, () => {

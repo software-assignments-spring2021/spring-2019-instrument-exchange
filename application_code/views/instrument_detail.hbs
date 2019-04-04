@@ -1,0 +1,22 @@
+
+
+<div class="background">
+    <div class="image-carousel">
+        {{#each instrument.pictures}}
+            <img class="studio-picture" src="/uploads/instruments/{{ this }}">
+        {{/each}}
+    </div>
+    <p> <strong>Instrument Name</strong>: {{ instrument.name }}</p>
+    <p> <strong>Category</strong>: {{ instrument.category }}</p>
+    <p> <strong>Weight</strong>: {{ instrument.weight }}lbs</p>
+    <p> <strong>Location</strong>: {{ instrument.address }}</p>
+    <p> <strong>Rental Price</strong>: ${{ instrument.rentalPrice }} per Day</p>
+    <p> <strong>Purchase Price</strong>: ${{ instrument.purchasePrice }}</p>
+    <p> <strong>Studio Description</strong>: {{ instrument.description }} </p>
+    {{#if buyer}}
+    <label for="listing-date-range">Rental Period</label>
+    <input id="listing-date-range"><br>
+    <button><a href="#">Rent Instrument</a></button>
+    <button><a href="#">Purchase Instrument</a></button>
+    {{/if}}
+</div>
