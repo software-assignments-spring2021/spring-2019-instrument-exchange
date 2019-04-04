@@ -6,9 +6,9 @@ const passport = require('passport');
 router.get('/seller_portal', function (req, res) {
     if (req.user) {
     console.log(req.user._id.toString())
-    res.render("seller_portal");
+    res.render('seller_portal');
     }
-    else res.render("login_required");
+    else res.render('login_required');
 });
 
 module.exports = router;
