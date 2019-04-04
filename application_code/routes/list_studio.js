@@ -63,6 +63,7 @@ router.post('/list_studio', function (req, res) {
             } else {
 
                 const newStudio = new Studio({
+                    name: req.body.name,
                     address: req.body.location,
                     pictures: pictures,
                     coverPicture: pictures[0],

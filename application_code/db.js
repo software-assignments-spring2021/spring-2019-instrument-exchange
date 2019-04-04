@@ -39,6 +39,7 @@ const InstrumentSchema = new Schema({
 });
 
 const StudioSchema = new Schema({
+    name: {type: String, required: true},
     address: {type: String, required: true},
     pictures: [String],
     coverPicture: {type: String, required: true},
