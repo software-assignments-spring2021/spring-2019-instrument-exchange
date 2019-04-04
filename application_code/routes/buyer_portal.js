@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 
 // authenticated route
-router.get('/seller_portal', function (req, res) {
+router.get('/buyer_portal', function (req, res) {
     if (req.user) {
-    console.log(req.user._id.toString())
-    res.render('seller_portal');
+      res.render('buyer_portal');
     }
     else res.render('login_required');
 });
