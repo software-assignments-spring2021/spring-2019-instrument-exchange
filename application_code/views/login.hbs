@@ -1,17 +1,27 @@
-<div class="container">
-    <h3>{{ message }}</h3>
-    <form method="post" action="/authenticate">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
 
-    <p>New User? Please <a href="/register">Register Here</a></p>
+    
+        
+        
+
+<div id="login-css" class="login-container">
+<div class="container">
+    <form method="post" action="/authenticate">
+        <div class="login-page">
+        <div class="form">
+            {{message}}
+            <div class="form-group">
+                <br>
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p>Not registered? <br> <a href="/register">Create an account</a></p>
+        </div>
+        </div>
+    </form>
+</div>
 </div>

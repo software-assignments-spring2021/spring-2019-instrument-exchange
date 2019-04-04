@@ -17,7 +17,7 @@ app.use(express.static(publicPath));
 publicDir = path.join(__dirname,'/public');
 app.use(express.static(publicDir));
 app.use('/static', express.static(path.join(__dirname, 'public')))
-//app.use(express.static('eevee.png')); 
+
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
