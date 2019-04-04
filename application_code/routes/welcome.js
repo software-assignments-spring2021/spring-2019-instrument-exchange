@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', function (req, res) {
-   res.render('login');
+   if(!req.user){
+      res.redirect('login');
+   }
+   res.render('buy_sell',{user:req.user});
+  
 });
 
 module.exports = router;

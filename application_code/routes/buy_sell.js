@@ -5,9 +5,9 @@ const passport = require('passport');
 // authenticated route
 router.get('/buy_sell', function (req, res) {
     if (req.user) {
-        res.render("buy_sell", {user: req.user});
+        res.render('buy_sell', {user: req.user});
     }
-    else res.render("login_required");
+    else res.render('login_required');
 });
 
 module.exports = router;
