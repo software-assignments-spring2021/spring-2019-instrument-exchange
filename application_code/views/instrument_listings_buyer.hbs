@@ -7,6 +7,7 @@
             <div class="card">
                 <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.coverPicture }}" alt="Card image cap">
                 <div class="card-body">
+                    <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                     <button><a href="/instrument_detail/buyer/{{ this._id }}">Rent/Purchase</a></button>
@@ -17,6 +18,3 @@
 {{else}}
     <p class="lead">Unfortunately we could not find any Instruments. PLease check back.</p>
 {{/if}}
-
-
-
