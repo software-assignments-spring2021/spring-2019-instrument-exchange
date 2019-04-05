@@ -69,6 +69,7 @@ router.post('/list_instrument', function (req, res) {
                 const newInstrument = new Instrument({
                     name: req.body.name,
                     address: req.body.location,
+                    zip: req.body.zip,
                     category: req.body.chosenCategory,
                     weight: req.body.weight,
                     pictures: pictures,
