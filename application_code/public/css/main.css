@@ -348,3 +348,8 @@ padding:0;
 
 .slick-arrow:hover {
   background: black;
+}
+
+.slider {
+  width: 50%;
+}
