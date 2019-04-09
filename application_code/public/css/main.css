@@ -20,8 +20,11 @@ textarea {
 
 /*for currentlistings.hbs*/
 .card {
-  width: 200px;
-  height: 400px;
+  float: left;
+  width: 275px;
+  padding: 20px;
+  height: 300px;
+  margin-top: 10px;
 }
 .cover-picture {
   width: 100%;
@@ -63,12 +66,24 @@ textarea {
   background-color: #f1f1f1
 }
 
-.dropdown-content {
+.dropdown-content-seller {
   display: none;
   position: absolute;
   background-color: #333;
   box-shadow: 0px 14px 16px 0px rgba(0,0,0,0.2);
   left: 12.5%;
+  top: 5%;
+  z-index: 1;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-left: -120px;
+  margin-top: 8px;
+  background-color: #333;
+  box-shadow: 0px 14px 16px 0px rgba(0,0,0,0.2);
+  /**left: 16%;**/
   top: 5%;
   z-index: 1;
 }
@@ -82,20 +97,20 @@ textarea {
   z-index: 5;
 }
 
-.dropdown-content a:hover {
-  z-index: 5;
+.dropdown-content1 .dropdown-content a:hover {
+  z-index: 6;
 
   background-color:#111;
 }
 
 .dropdown:hover .dropdown-content {
-  z-index: 5;
+  z-index: 6;
   float: none;
   display: inline-block;
   
 }
 .navbar-css .dropdown-content li {
-  z-index: 5;
+  z-index: 6;
   float: none;
   position:relative;
 
@@ -160,6 +175,8 @@ font-size: 14px;
 transition: all 0.3 ease;
 cursor: pointer;
 }
+
+
 .form button:hover,.form button:active,.form button:focus {
 background: #302f2f
 }
@@ -312,13 +329,15 @@ padding:0;
   width: 275px;
   padding: 20px;
   height: 300px;
+  margin-top: 10px;
 }
 
 .card-text{
-  color: white;
+  color: #FFFFFF;
   padding: 20px;
-  margin-top: 10px;
-  background-color: #333333;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  background-color: #333;  
 }
 
 /*for studio detail page*/
@@ -329,8 +348,10 @@ padding:0;
 }
 
 .background {
-  background-color: aliceblue;
-  text-align: center;
+  background-color: #FFFFFF;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  text-align: left;
   color: black;
   margin-left: 20%;
   margin-right: 20%;
@@ -339,8 +360,55 @@ padding:0;
 }
 .studio-picture {
   width: 500px;
-  height: 300px;
+  height: 500px;
 }
+
+  #buyer{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: 0;
+  background: #444444;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  position:relative;
+  margin-top: 10px;
+  }
+
+  #seller{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: 0;
+    background: #444444;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    width: 19.1%;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-top: 10px;
+    position:absolute;
+    margin-top: 36.6%;
+    margin-left: -20.5%;
+    }
+  
+  .button:hover,.form button:active,.form button:focus {
+  background: #302f2f
+  }
+
+  .button a {
+    color: #b3b5b7;
+    text-decoration: none;
+  }
 
 .slick-arrow {
   background: black;
