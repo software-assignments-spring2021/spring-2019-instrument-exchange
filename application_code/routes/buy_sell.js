@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
+const db = require('../db');
 
 // authenticated route
 router.get('/buy_sell', function (req, res) {

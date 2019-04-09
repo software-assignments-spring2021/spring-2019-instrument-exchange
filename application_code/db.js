@@ -34,8 +34,8 @@ const InstrumentSchema = new Schema({
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
-    purchasePrice: {type: Number, required: true}
-
+    purchasePrice: {type: Number, required: true},
+    inCart: {type: Boolean, default: false}
 });
 
 const StudioSchema = new Schema({
@@ -44,7 +44,8 @@ const StudioSchema = new Schema({
     pictures: [String],
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
-    rentalPrice: {type: Number, required: true}
+    rentalPrice: {type: Number, required: true},
+    inCart: {type: Boolean, default: false}
 });
 
 const RangeSchema = new Schema({
@@ -91,7 +92,10 @@ const StudioTransactionSchema = new Schema({
     price: {type: Number, required: true}
 });
 
-
+const ProductSchema = new Schema({
+  name: {type: String, required: true},
+  price: {type: Number, required: true}
+})
 
 // registering the models
 const User = mongoose.model('User', UserSchema);
@@ -101,31 +105,7 @@ const InstrumentTransaction = mongoose.model('InstrumentTransaction', Instrument
 const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionSchema);
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
-var Cart = function Cart() {
-  this.items = [];
-  this.totalQuantity = 0;
-  this.totalPrice = 0;
-
-  this.add = function(item, id) {
-    var storedItem = this.items[id];
-    if (!storedItem) {
-      storedItem = this.items[id] = {item: item, qty: 0, price: 0}
-    }
-    storedItem.qty++;
-    storedItem.price = storedItem.item.price * storedItem.qty;
-    this.totalQty++;
-    this.totalPrice += storedItem.price;
-  }
-
-  this.generateArray = function() {
-    var arr = [];
-    for (var id in this.items) {
-      arr.push(this.items[id]);
-    }
-    return arr;
-  }
-
-}
+const Product = mongoose.model('Product', ProductSchema);
 
 module.exports = {
     User: User,
@@ -135,7 +115,7 @@ module.exports = {
     StudioTransaction: StudioTransaction,
     InstrumentListing: InstrumentListing,
     StudioListing: StudioListing,
-    Cart: Cart
+    Product: Product
 };
 
 
