@@ -83,6 +83,7 @@ const instrumentListing = require('./routes/list_instrument');
 const profile = require('./routes/profile');
 const currentListings = require('./routes/current_listings');
 const showListingsBuyer = require('./routes/show_listings_buyer');
+const shoppingCart = require('./routes/shopping_cart');
 
 // route middleware goes here.
 app.use('/', register);
@@ -98,6 +99,8 @@ app.use('/', instrumentListing);
 app.use('/', profile);
 app.use('/', currentListings);
 app.use('/', showListingsBuyer);
+app.use('/', shoppingCart);
+
 // firing up the node server
 const appConnection = function () {
     app.listen(process.env.PORT || 3000, () => {

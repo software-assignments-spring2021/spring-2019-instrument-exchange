@@ -6,7 +6,7 @@ router.get('/', function (req, res) {
       res.redirect('login');
    }
    res.render('buy_sell',{user:req.user});
-  
+
 });
 
 module.exports = router;

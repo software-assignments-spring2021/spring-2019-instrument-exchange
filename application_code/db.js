@@ -101,7 +101,31 @@ const InstrumentTransaction = mongoose.model('InstrumentTransaction', Instrument
 const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionSchema);
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
+var Cart = function Cart() {
+  this.items = [];
+  this.totalQuantity = 0;
+  this.totalPrice = 0;
 
+  this.add = function(item, id) {
+    var storedItem = this.items[id];
+    if (!storedItem) {
+      storedItem = this.items[id] = {item: item, qty: 0, price: 0}
+    }
+    storedItem.qty++;
+    storedItem.price = storedItem.item.price * storedItem.qty;
+    this.totalQty++;
+    this.totalPrice += storedItem.price;
+  }
+
+  this.generateArray = function() {
+    var arr = [];
+    for (var id in this.items) {
+      arr.push(this.items[id]);
+    }
+    return arr;
+  }
+
+}
 
 module.exports = {
     User: User,
@@ -110,7 +134,8 @@ module.exports = {
     InstrumentTransaction: InstrumentTransaction,
     StudioTransaction: StudioTransaction,
     InstrumentListing: InstrumentListing,
-    StudioListing: StudioListing
+    StudioListing: StudioListing,
+    Cart: Cart
 };
 
 
