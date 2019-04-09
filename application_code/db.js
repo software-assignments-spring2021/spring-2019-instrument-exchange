@@ -13,7 +13,8 @@ const UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
     password: {type:String, required: true},
-    phoneNumber: {type: Number, minlength: 10},
+    address: {type: String, required: true},
+    zip: {type:String, required: true},
     dateRegistered: {type: Date, required: true},
     weekdayRegistered: {type: String, required: true},
     monthRegistered: {type: String, required: true},
@@ -29,6 +30,7 @@ const InstrumentSchema = new Schema({
         enum: ["String", "Brass", "Woodwind", "Percussion", "Synthesizer"]
     },
     address: {type: String, required: true},
+    zip: {type:String, required: true},
     weight: {type: Number, required: true},
     pictures: [String],
     coverPicture: {type: String, required: true},
@@ -41,6 +43,7 @@ const InstrumentSchema = new Schema({
 const StudioSchema = new Schema({
     name: {type: String, required: true},
     address: {type: String, required: true},
+    zip: {type:String, required: true},
     pictures: [String],
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
