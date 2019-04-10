@@ -53,10 +53,6 @@ hbs.registerHelper("ifeq", function(value1, value2, options){
   return (value1 == value2) ? options.fn(this) : options.inverse(this);
 });
 
-hbs.registerHelper('ifnoteq', function (value1, value2, options) {
-  return (value1 != value2) ? options.fn(this) : options.inverse(this);
-});
-
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
