@@ -53,6 +53,7 @@ router.post('/register_user', (req, res) => {
             timeRegistered: formattedDate[4]
         });
 
+
         // Hash the password
         bcrypt.hash(newUser.password, 10, (err, hash) => {
             if (err) throw err;
@@ -62,8 +63,18 @@ router.post('/register_user', (req, res) => {
             newUser.save().then(user => {
                 console.log('saving user to the database');
                 console.log(user);
+
+                const newShoppingCart = new db.ShoppingCart({
+                  sellerId: user._id.toString(),
+                  studios: [],
+                  instruments: []
+                })
+                console.log(newShoppingCart);
+
+                newShoppingCart.save();
                 res.redirect('/login');
             }).catch(err => console.log(err));
+
         })
 
     }

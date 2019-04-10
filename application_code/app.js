@@ -84,6 +84,7 @@ const profile = require('./routes/profile');
 const currentListings = require('./routes/current_listings');
 const showListingsBuyer = require('./routes/show_listings_buyer');
 const shoppingCart = require('./routes/shopping_cart');
+const checkout = require('./routes/checkout');
 
 // route middleware goes here.
 app.use('/', register);
@@ -100,6 +101,7 @@ app.use('/', profile);
 app.use('/', currentListings);
 app.use('/', showListingsBuyer);
 app.use('/', shoppingCart);
+app.use('/', checkout);
 
 // firing up the node server
 const appConnection = function () {

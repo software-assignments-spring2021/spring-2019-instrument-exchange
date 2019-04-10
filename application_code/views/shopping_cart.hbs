@@ -1,32 +1,22 @@
 <h1>My Shopping Cart</h1>
 
-{{#if studios}}
+{{#if cartItems}}
   <div class="card-columns">
-      {{#each studios}}
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="card-text">{{ this.name }}</h3>
-              </div>
-          </div>
+      {{#each cartItems}}
+        <div class="card">
+            <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
+            <div class="card-body">
+                <h3 class="card-text">{{ this.item.name }}</h3>
+                <h5 class="card-text">{{ this.item.address }}</h5>
+                <p class="card-text">Quantity: {{ this.qty }}</p>
+                <p class="card-text">Cost: {{ this.price }}</p>
+            </div>
+        </div>
       {{/each}}
   </div>
 {{else}}
-  <p class="lead">There are no studios in your cart.</p>
-{{/if}}
-
-{{#if instruments}}
-<div class="card-columns">
-    {{#each instruments}}
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-text">{{ this.name }}</h3>
-            </div>
-        </div>
-    {{/each}}
-</div>
-{{else}}
-  <p class="lead">There are no instruments in your cart.</p>
+  <h1>cart is empty</h1>
 {{/if}}
 
 <!-- Button should lead to checkout page -->
-<button type="button" class="btn btn-success">Check Out</button>
+<a class="btn btn-primary" id="checkout" href="/checkout">Check out</a>

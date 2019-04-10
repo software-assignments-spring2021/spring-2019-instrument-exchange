@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Instrument = require('../db').Instrument;
 const Studio = require('../db').Studio;
+const Cart = require('../cart');
 
 // authenticated route
 router.get('/studio_listings_buyer', function (req, res) {
@@ -53,6 +54,27 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
             })
             .catch(err => console.log(err));
     }  else res.render("login_required");
+});
+
+router.get('/add-to-cart/:id', function(req, res){
+  if (req.user) {
+    var studioId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+
+    Studio.findById(studioId, function(err, studio) {
+      // Error handling
+      if (err) {
+        return res.redirect('/shopping_cart');
+      }
+
+      cart.add(studio, studio._id);
+      req.session.cart = cart;
+      console.log(req.session.cart.items);
+      console.log(cart.items[studio._id]);
+      res.render("shopping_cart", {cartItems: req.session.cart.items});
+    })
+  } else res.render("login_required");
+
 });
 
 module.exports = router;

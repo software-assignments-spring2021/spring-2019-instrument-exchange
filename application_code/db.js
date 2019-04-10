@@ -92,9 +92,10 @@ const StudioTransactionSchema = new Schema({
     price: {type: Number, required: true}
 });
 
-const ProductSchema = new Schema({
-  name: {type: String, required: true},
-  price: {type: Number, required: true}
+const ShoppingCartSchema = new Schema({
+  buyerId: {type: Schema.Types.ObjectId, ref: "User"},
+  studios: [StudioSchema],
+  instruments: [InstrumentSchema]
 })
 
 // registering the models
@@ -105,7 +106,7 @@ const InstrumentTransaction = mongoose.model('InstrumentTransaction', Instrument
 const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionSchema);
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
-const Product = mongoose.model('Product', ProductSchema);
+const ShoppingCart = mongoose.model('ShoppingCart', ShoppingCartSchema)
 
 module.exports = {
     User: User,
@@ -115,7 +116,7 @@ module.exports = {
     StudioTransaction: StudioTransaction,
     InstrumentListing: InstrumentListing,
     StudioListing: StudioListing,
-    Product: Product
+    ShoppingCart: ShoppingCart
 };
 
 
