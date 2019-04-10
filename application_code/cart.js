@@ -2,7 +2,18 @@ module.exports = function Cart(oldCart) {
   this.items = oldCart.items || {};
   this.totalPrice = oldCart.totalPrice || 0 ;
 
-  this.add = function(item, id) {
+  // Need to add daysRented functionality
+  this.addRental = function(item, id) {
+    var storedItem = this.items[id];
+    if (!storedItem) {
+      storedItem = this.items[id] = {item: item, price: 0};
+      storedItem.price = storedItem.item.rentalPrice;
+      this.totalPrice += storedItem.price;
+    }
+  }
+
+  this.addPurchase = function(item, id) {
+    var storedItem = this.items[id];
     var storedItem = this.items[id];
     if (!storedItem) {
       storedItem = this.items[id] = {item: item, price: 0};

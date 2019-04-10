@@ -35,7 +35,7 @@ const InstrumentSchema = new Schema({
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
     purchasePrice: {type: Number, required: true},
-    inCart: {type: Boolean, default: false}
+    classType: {type: String, default: "Instrument"}
 });
 
 const StudioSchema = new Schema({
@@ -45,7 +45,7 @@ const StudioSchema = new Schema({
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
-    inCart: {type: Boolean, default: false}
+    classType: {type: String, default: "Studio"}
 });
 
 const RangeSchema = new Schema({

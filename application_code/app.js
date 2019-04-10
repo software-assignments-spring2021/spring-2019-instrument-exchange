@@ -47,6 +47,15 @@ app.use(function(req, res, next) {
 // view engine setup
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+var hbs = require('hbs');
+
+hbs.registerHelper("ifeq", function(value1, value2, options){
+  return (value1 == value2) ? options.fn(this) : options.inverse(this);
+});
+
+hbs.registerHelper('ifnoteq', function (value1, value2, options) {
+  return (value1 != value2) ? options.fn(this) : options.inverse(this);
+});
 
 // Express Validator
 app.use(expressValidator({

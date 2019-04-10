@@ -3,14 +3,19 @@
 {{#if cart.items}}
   <div class="card-columns">
       {{#each cart.items}}
-        <div class="card">
-            <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
-            <div class="card-body">
-                <h3 class="card-text">{{ this.item.name }}</h3>
-                <h5 class="card-text">{{ this.item.address }}</h5>
-                <p class="card-text">Cost: ${{ this.price }}</p>
-            </div>
+      <div class="card">
+        {{#ifeq this.item.classType "Studio"}}
+          <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
+        {{/ifeq}}
+        {{#ifeq this.item.classType "Instrument"}}
+          <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.item.coverPicture }}" alt="Card image cap">
+        {{/ifeq}}
+        <div class="card-body">
+            <h3 class="card-text">{{ this.item.name }}</h3>
+            <h5 class="card-text">{{ this.item.address }}</h5>
+            <p class="card-text">Cost: ${{ this.price }}</p>
         </div>
+      </div>
       {{/each}}
   </div>
 {{else}}
