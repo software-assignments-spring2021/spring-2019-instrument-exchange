@@ -1,15 +1,14 @@
 <h1>My Shopping Cart</h1>
 
-{{#if cartItems}}
+{{#if cart.items}}
   <div class="card-columns">
-      {{#each cartItems}}
+      {{#each cart.items}}
         <div class="card">
             <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
             <div class="card-body">
                 <h3 class="card-text">{{ this.item.name }}</h3>
                 <h5 class="card-text">{{ this.item.address }}</h5>
-                <p class="card-text">Quantity: {{ this.qty }}</p>
-                <p class="card-text">Cost: {{ this.price }}</p>
+                <p class="card-text">Cost: ${{ this.price }}</p>
             </div>
         </div>
       {{/each}}

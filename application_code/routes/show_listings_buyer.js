@@ -56,24 +56,29 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
     }  else res.render("login_required");
 });
 
-router.get('/add-to-cart/:id', function(req, res){
+router.get('/add-studio-to-cart', function(req, res){
   if (req.user) {
-    var studioId = req.params.id;
-    var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+    if (req.query.id) {
+      var studioId = req.query.id;
+      var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-    Studio.findById(studioId, function(err, studio) {
-      // Error handling
-      if (err) {
-        return res.redirect('/shopping_cart');
-      }
+      Studio.findById(studioId, function(err, studio) {
+        // Error handling
+        if (err) {
+          return res.redirect('/shopping_cart');
+        }
 
-      cart.add(studio, studio._id);
-      req.session.cart = cart;
-      console.log(req.session.cart.items);
-      console.log(cart.items[studio._id]);
-      res.render("shopping_cart", {cartItems: req.session.cart.items});
-    })
-  } else res.render("login_required");
+        cart.add(studio, studio._id);
+        req.session.cart = cart;
+        console.log(req.session.cart.items);
+        console.log(cart.items[studio._id]);
+        res.redirect("studio_listings_buyer");
+      })
+    } else {
+      return res.render("shopping_cart", {cart: req.session.cart});
+    }
+  }
+  else res.render("login_required");
 
 });
 
