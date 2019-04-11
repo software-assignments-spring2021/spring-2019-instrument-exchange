@@ -35,32 +35,7 @@ textarea {
   display: inline-block;
 }
 
-.navbar-css ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  top: 100%;
 
-}
-.navbar-css li{
-  float: left;
-  position: relative;
-  top: 100%;
-  
-}
-
-.navbar-css li a{
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-.navbar-css li a:hover {
-  background-color: #111;
-}
 
 #dropdown-content a:hover {
   background-color: #f1f1f1
@@ -97,11 +72,6 @@ textarea {
   z-index: 5;
 }
 
-.dropdown-content1 .dropdown-content a:hover {
-  z-index: 6;
-
-  background-color:#111;
-}
 
 .dropdown:hover .dropdown-content {
   z-index: 6;
@@ -140,58 +110,7 @@ textarea {
   margin: auto 0;
   margin-top: 20px;
 }
-.form {
-position: relative;
-z-index: 1;
-background: #FFFFFF;
-max-width: 360px;
-margin: 0 auto 100px;
-padding: 45px;
-text-align: center;
-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-font-family: "Roboto", sans-serif;
-outline: 0;
-background: #f2f2f2;
-width: 100%;
-border: 0;
-margin: 0 0 15px;
-padding: 15px;
-box-sizing: border-box;
-font-size: 14px;
-}
-.form button {
-font-family: "Roboto", sans-serif;
-text-transform: uppercase;
-outline: 0;
-background: #444444;
-width: 100%;
-border: 0;
-padding: 15px;
-color: #FFFFFF;
-font-size: 14px;
--webkit-transition: all 0.3 ease;
-transition: all 0.3 ease;
-cursor: pointer;
-}
 
-
-.form button:hover,.form button:active,.form button:focus {
-background: #302f2f
-}
-.form .message {
-margin: 15px 0 0;
-color: #b3b3b3;
-font-size: 12px;
-}
-.form .message a {
-color: #b3b5b7;
-text-decoration: none;
-}
-.form .register-form {
-display: none;
-}
 
 #login-css .container {
   position: relative;
