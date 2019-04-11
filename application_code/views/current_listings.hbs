@@ -1,4 +1,14 @@
+<link rel="stylesheet" type="text/css" href="/css/current-listings-style.css">
 
+
+
+
+<div id="tab">
+    <button class="std-btn" onclick="openTab('studio')">Studios</button>
+    <button class="ins-btn" onclick="openTab('instrument')">Instruments</button>
+</div>
+
+<div id='studio' class="view">
 {{#if studios}}
     <p class="lead">Here are your Studio Listings</p>
     <div class="card-columns">
@@ -12,14 +22,14 @@
                 </div>
                 <button><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
             </div>
-
-        {{/each}}
     </div>
+        {{/each}}
 {{else}}
-    <p class="lead">You currently don't have any listings for studios</p>
+    <p class="lead" id="empty-studios">You currently don't have any listings for studios</p>
 {{/if}}
+</div>
 
-
+<div id='instrument' class="view">
 {{#if instruments}}
     <p class="lead">Here are your Instruments Listings</p>
     <div class="card-columns">
@@ -33,49 +43,27 @@
                 </div>
                 <button class = "button" id="seller"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
             </div>
-
+</div>
         {{/each}}
-    </div>
 {{else}}
-    <p class="lead">You currently don't have any listings for Instruments</p>
+    <p class="lead" id="empty-instruments">You currently don't have any listings for Instruments</p>
 {{/if}}
+  </div>
+
+<script>
+    window.onload = function() {
+    document.getElementById('instrument').style.display = 'none';
+};
+
+function openTab(tabName) {
+  var i;
+  var x = document.getElementsByClassName("view");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(tabName).style.display = "inline-block";  
+}
+
+</script>
 
 
-<!--<!doctype html>-->
-
-<!--<html>-->
-	<!--<head>-->
-
-		<!--<title>Title</title>-->
-	<!--</head>-->
-
-    <!--<body>-->
-        <!--<div id = "content">-->
-            <!--{{!-- {{#if error}}-->
-                <!--<li>Error!</li>-->
-            <!--{{else}}-->
-                <!--<li>{{instrument.name}}</li>-->
-            <!--{{/if}} --}}-->
-        <!--</div>-->
-    <!--</body>-->
-
-<!--</html>-->
-
-<!--<script src="jquery-3.3.1.min.js">-->
-    <!--function getList () {-->
-        <!--$.ajax({-->
-            <!--method: "post",-->
-            <!--url: "/current_listings",-->
-            <!--success: function (err, data) {-->
-                <!--const div = document.getElementById("content");-->
-                <!--const list = docuemt.createElement("li");-->
-                <!--list.textContent = data.name;-->
-                <!--div.appendChild(list);-->
-            <!--}-->
-        <!--})-->
-    <!--}-->
-
-    <!--window.onload = getList;-->
-
-
-<!--</script>-->

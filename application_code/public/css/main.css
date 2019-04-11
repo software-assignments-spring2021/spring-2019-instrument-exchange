@@ -103,28 +103,7 @@ margin:0;
 padding:0;
 }
 
-.lead{
-  background-color: #333333;
-  margin-top: 100px;
-  padding: 20px;
-  font-size: 16px;
-  color: white;
-}
-.card{
-  float: left;
-  width: 275px;
-  padding: 20px;
-  height: 300px;
-  margin-top: 10px;
-}
 
-.card-text{
-  color: #FFFFFF;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: -20px;
-  background-color: #333;  
-}
 
 /*for studio detail page*/
 .studio-carousel {
@@ -167,25 +146,7 @@ padding:0;
   margin-top: 10px;
   }
 
-  #seller{
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    outline: 0;
-    background: #444444;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    width: 19.1%;
-    transition: all 0.3 ease;
-    cursor: pointer;
-    margin-top: 10px;
-    position:absolute;
-    margin-top: 36.6%;
-    margin-left: -20.5%;
-    }
+ 
   
   .button:hover,.form button:active,.form button:focus {
   background: #302f2f
