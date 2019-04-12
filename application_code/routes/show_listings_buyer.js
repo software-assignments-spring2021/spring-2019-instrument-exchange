@@ -76,7 +76,7 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
 });
 
 
-// for location service and price sorting
+// for location service for STUDIOS and price sorting
 router.get('/studios/applyfilter', function(req, res) {
     if (req.user) {
         const distance = req.query.zip_slider;
@@ -100,5 +100,29 @@ router.get('/studios/applyfilter', function(req, res) {
     } else res.render("login_required");
 });
 
+// for location service  for INSTRUMENTS and price sorting
+router.get('/instruments/applyfilter', function(req, res) {
+    if (req.user) {
+        const distance = req.query.zip_slider;
+        const price = req.query.sort_price;
+        const userZip = req.user.zip;
+        // creating the request url for zip api.
+        const url = `https://www.zipcodeapi.com/rest/${api}/radius.json/${userZip}/${distance}/mile`;
+        console.log(url);
+        request(url, {json: true}, (err, response, body) => {
+            if (err) console.log(err);
+            zipCodes = body.zip_codes.map(function(ele) {
+                return ele.zip_code;
+            });
+            console.log(zipCodes);
+            Instrument.find({zip: {$in: zipCodes}})
+                .then( instruments => {
+                    console.log("these are instruments found", instruments);
+                    res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance});
+                })
+                .catch(err => console.log(err));
+        });
+    } else res.render("login_required");
+});
 
 module.exports = router;
