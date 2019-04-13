@@ -88,7 +88,6 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
 
 router.post('/add_studio/:id', function(req, res) {
   if (req.user) {
-    console.log("Days: " + req.body.);
     // Params indicates the URL passed.
     if (req.params.id) {
       var instrumentId = req.params.id;
