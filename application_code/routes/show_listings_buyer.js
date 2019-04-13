@@ -56,31 +56,65 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
     }  else res.render("login_required");
 });
 
-router.get('/add_studio_to_cart', function(req, res){
+
+// router.get('/add_studio_to_cart/:id', function(req, res){
+//   if (req.user) {
+//
+//     console.log(req.body);
+//     if (req.body.id) {
+//
+//       var studioId = req.body.id;
+//       var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+//
+//       Studio.findById(studioId, function(err, studio) {
+//         // Error handling
+//         if (err) {
+//           return res.redirect('/shopping_cart');
+//         }
+//
+//         cart.addRental(studio, studio._id);
+//         req.session.cart = cart;
+//         console.log(req.session.cart.items);
+//         console.log(cart.items[studio._id]);
+//         res.redirect("studio_listings_buyer");
+//       })
+//     } else {
+//       return res.render("shopping_cart", {cart: req.session.cart});
+//     }
+//   }
+//   else res.render("login_required");
+//
+// });
+
+router.post('/add_studio/:id', function(req, res) {
   if (req.user) {
-    if (req.query.id) {
-      var studioId = req.query.id;
+    console.log("Days: " + req.body.);
+    // Params indicates the URL passed.
+    if (req.params.id) {
+      var instrumentId = req.params.id;
       var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
-      Studio.findById(studioId, function(err, studio) {
-        // Error handling
+
+      Studio.findById(instrumentId, function(err, studio) {
         if (err) {
           return res.redirect('/shopping_cart');
         }
 
         cart.addRental(studio, studio._id);
         req.session.cart = cart;
-        console.log(req.session.cart.items);
-        console.log(cart.items[studio._id]);
-        res.redirect("studio_listings_buyer");
+        Studio.find()
+            .then(studios => {
+                res.render("studio_listings_buyer", {studios: studios})
+            })
+            .catch(err => console.log(err));
       })
     } else {
       return res.render("shopping_cart", {cart: req.session.cart});
     }
-  }
-  else res.render("login_required");
-
+  } else res.render("login_required");
 });
+
+// Only post is necessary lol
 
 router.get('/add_instrument_to_cart_rental', function(req, res) {
   if (req.user) {
@@ -92,7 +126,7 @@ router.get('/add_instrument_to_cart_rental', function(req, res) {
         if (err) {
           return res.redirect('/shopping_cart');
         }
-        
+
         cart.addRental(instrument, instrument._id);
         req.session.cart = cart;
         res.redirect("instrument_listings_buyer");
