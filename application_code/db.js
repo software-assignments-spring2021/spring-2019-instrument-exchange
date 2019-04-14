@@ -2,18 +2,24 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
-
 // defining schemas for database
 var date = new Date(Date.now());
 var formattedDate = date.toString().split(" ");
+
+const RangeSchema = new Schema({
+    start: {type: Date, default: Date.now()},
+    end: {type: Date, default: Date.now()}
+});
 
 const UserSchema = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
     username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
+    phoneNumber: {type: Number, required: true},
     password: {type:String, required: true},
-    phoneNumber: {type: Number, minlength: 10},
+    address: {type: String, required: true},
+    zip: {type:String, required: true},
     dateRegistered: {type: Date, required: true},
     weekdayRegistered: {type: String, required: true},
     monthRegistered: {type: String, required: true},
@@ -29,40 +35,38 @@ const InstrumentSchema = new Schema({
         enum: ["String", "Brass", "Woodwind", "Percussion", "Synthesizer"]
     },
     address: {type: String, required: true},
+    zip: {type:String, required: true},
     weight: {type: Number, required: true},
     pictures: [String],
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
     purchasePrice: {type: Number, required: true},
-    classType: {type: String, default: "Instrument"}
+    isRental: {type: Boolean, default: false},
+    booked: [RangeSchema] // array of date ranges
 });
 
 const StudioSchema = new Schema({
     name: {type: String, required: true},
     address: {type: String, required: true},
+    zip: {type:String, required: true},
     pictures: [String],
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
-    classType: {type: String, default: "Studio"}
-});
-
-const RangeSchema = new Schema({
-    start: {type: Date, default: Date.now()},
-    end: {type: Date, default: Date.now()}
+    daysRented: {type: Number, default: 1},
+    isRental: {type: Boolean, default: true},
+    booked: [RangeSchema] // array of date ranges
 });
 
 const InstrumentListingSchema = new Schema({
     instrumentId : {type: Schema.Types.ObjectId, ref: "Instrument"},
     sellerId: {type: Schema.Types.ObjectId, ref: "User"},
-    booked: [RangeSchema] // array of date ranges
 });
 
 const StudioListingSchema = new Schema({
     studioId: {type: Schema.Types.ObjectId, ref:"Studio"},
     sellerId: {type: Schema.Types.ObjectId, ref:"User"},
-    booked: [RangeSchema] // array of date ranges
 });
 
 const InstrumentTransactionSchema = new Schema({
@@ -92,13 +96,9 @@ const StudioTransactionSchema = new Schema({
     price: {type: Number, required: true}
 });
 
-const ShoppingCartSchema = new Schema({
-  buyerId: {type: Schema.Types.ObjectId, ref: "User"},
-  studios: [StudioSchema],
-  instruments: [InstrumentSchema]
-})
 
 // registering the models
+const Range = mongoose.model('Range', RangeSchema);
 const User = mongoose.model('User', UserSchema);
 const Instrument = mongoose.model('Instrument', InstrumentSchema);
 const Studio = mongoose.model('Studio', StudioSchema);
@@ -106,17 +106,16 @@ const InstrumentTransaction = mongoose.model('InstrumentTransaction', Instrument
 const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionSchema);
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
-const ShoppingCart = mongoose.model('ShoppingCart', ShoppingCartSchema)
 
 module.exports = {
+    Range: Range,
     User: User,
     Instrument: Instrument,
     Studio: Studio,
     InstrumentTransaction: InstrumentTransaction,
     StudioTransaction: StudioTransaction,
     InstrumentListing: InstrumentListing,
-    StudioListing: StudioListing,
-    ShoppingCart: ShoppingCart
+    StudioListing: StudioListing
 };
 
 

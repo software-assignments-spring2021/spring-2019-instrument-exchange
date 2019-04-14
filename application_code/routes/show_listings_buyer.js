@@ -8,8 +8,6 @@ const Range = require('../db').Range;
 
 const moment = require('moment');
 
-console.log(Range);
-
 // authenticated route
 router.get('/studio_listings_buyer', function (req, res) {
     if (req.user) {
@@ -84,21 +82,23 @@ router.post('/add_studio/:id', function(req, res) {
       var dateTwo = new Date(dayTwoArray[0], dayTwoArray[1], dayTwoArray[2]);
 
 
-
       Studio.findById(studioId, function(err, studio) {
         if (err) {
           return res.redirect('/shopping_cart');
         }
 
         StudioListing.find({studioId: studioId}, function(err, studioListing){
-          var range = new Range();
+
         });
 
+        var range = new Range();
+        range.start = dateOne;
+        range.end = dateTwo;
 
         // Set datafields
-        studio.startDate = dateOne;
-        studio.endDate = dateTwo;
         studio.daysRented = days;
+        studio.booked.push(range);
+
         cart.addRental(studio, studio._id);
         req.session.cart = cart;
         Studio.find()
