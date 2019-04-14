@@ -1,5 +1,25 @@
 
 
+<form id="filter-div" method="get" action="/studios/applyfilter">
+    <label for="zip-slider">Filter By Distance</label>
+    {{#if sliderValue}}
+        <input type="range" min="0" max="200" value="{{sliderValue}}" class="slider service" id="zip-slider" name="zip_slider">
+        <input type="text" readonly id="slider-value" value="{{sliderValue}} miles">
+    {{else}}
+        <input type="range" min="0" max="200" value="0" class="slider service" id="zip-slider" name="zip_slider">
+        <input type="text" readonly id="slider-value" value="0 miles">
+    {{/if}}
+    <br>
+    <label for="price">Sort Price By:</label>
+    <select name="sort_price" id="price" class="service">
+        <option value="default">None</option>
+        <option value="asc">Lowest To Highest</option>
+        <option value="desc">Highest To Lowest</option>
+    </select>
+    <br>
+    <input type="submit" value="Apply Filter">
+</form>
+
 {{#if studios}}
     <p class="lead">Studios Found</p>
     <div class="card-columns">
@@ -8,7 +28,7 @@
                 <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.coverPicture }}" alt="Card image cap">
                 <div class="card-body">
                     <h3 class="card-text">{{ this.name }}</h3>
-                    <h5 class="card-text">{{ this.address }}</h5>
+                    <h5 class="card-text">{{ this.address }} {{ this.zip }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                     <button><a href="/studio_detail/buyer/{{ this._id }}">Rent</a></button>
                 </div>
@@ -16,5 +36,5 @@
         {{/each}}
     </div>
 {{else}}
-    <p class="lead">Unfortunately we could not find any Studios. PLease check back.</p>
+    <p class="lead">Unfortunately, we could not find any Studios. Please check back.</p>
 {{/if}}

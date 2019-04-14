@@ -5,16 +5,27 @@ const Studio = require('../db').Studio;
 const Cart = require('../cart');
 const StudioListing = require('../db').StudioListing;
 const Range = require('../db').Range;
-
 const moment = require('moment');
+const InstrumentListing = require('../db').InstrumentListing;
+const api = require('../api_keys').zipAPI;
+const request = require('request');
+
 
 // authenticated route
 router.get('/studio_listings_buyer', function (req, res) {
     if (req.user) {
-        Studio.find()
-            .then(studios => {
-                console.log(studios);
-                res.render("studio_listings_buyer", {studios: studios})
+        StudioListing.find({sellerId: {$ne: req.user._id}})
+            // getting all the studio ids from the studio listings schema
+            // that do not include this user's id.
+            .then(listings =>{
+                const ids = listings.map(ele => {
+                    return ele.studioId;
+                });
+                Studio.find({_id: {$in: ids}})
+                    .then(studios => {
+                        res.render("studio_listings_buyer", {studios: studios})
+                    })
+                    .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     }
@@ -24,21 +35,29 @@ router.get('/studio_listings_buyer', function (req, res) {
 // authenticated route
 router.get('/instrument_listings_buyer', function (req, res) {
     if (req.user) {
-        Instrument.find()
-            .then(instruments => {
-                console.log(instruments);
-                res.render("instrument_listings_buyer", {instruments: instruments})
+        InstrumentListing.find({sellerId: {$ne: req.user._id}})
+        // getting all the instrument ids from the instrument listings schema
+        // that do not include this user's id.
+            .then(listings =>{
+                const ids = listings.map(ele => {
+                    return ele.instrumentId;
+                });
+                Instrument.find({_id: {$in: ids}})
+                    .then(instruments => {
+                        res.render("instrument_listings_buyer", {instruments: instruments})
+                    })
+                    .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     }
     else res.render("login_required");
 });
 
-
+// authenticated route
 router.get("/studio_detail/:role/:id", function(req, res) {
     if (req.user) {
         const studioId = req.params.id;
-        buyer = req.params.role === "buyer";
+        const buyer = req.params.role === "buyer";
         Studio.findOne({"_id": studioId})
             .then(studio => {
                 res.render("studio_detail", {studio: studio, buyer: buyer});
@@ -47,11 +66,11 @@ router.get("/studio_detail/:role/:id", function(req, res) {
     }  else res.render("login_required");
 });
 
-
+//authenticated route
 router.get("/instrument_detail/:role/:id", function(req, res) {
     if (req.user) {
         const instrumentId = req.params.id;
-        buyer = req.params.role === "buyer";
+        const buyer = req.params.role === "buyer";
         Instrument.findOne({"_id": instrumentId})
             .then(instrument => {
                 res.render("instrument_detail", {instrument: instrument, buyer: buyer});

@@ -10,8 +10,9 @@
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
+                <button><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
             </div>
-            <button><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
+
         {{/each}}
     </div>
 {{else}}
@@ -30,8 +31,9 @@
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
+                <button class = "button" id="seller"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
             </div>
-            <button><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
+
         {{/each}}
     </div>
 {{else}}

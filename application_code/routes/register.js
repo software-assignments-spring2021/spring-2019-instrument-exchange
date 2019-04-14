@@ -9,7 +9,7 @@ router.get('/register', (req, res) => res.render('Register'));
 
 // Register Handle
 router.post('/register_user', (req, res) => {
-    const { firstName, lastName, username, email, password, password2, phoneNumber } = req.body;
+    const { firstName, lastName, username, email, location, zip, password, password2, phoneNumber } = req.body;
 
     req.check('firstName', 'First name is required').notEmpty();
     req.check('lastName', 'Last name is required').notEmpty();
@@ -18,6 +18,8 @@ router.post('/register_user', (req, res) => {
     req.check('username', 'Username is required').notEmpty();
     req.check('password', 'Password is required').notEmpty();
     req.check('password2', 'Passwords do not match').equals(req.body.password);
+    req.check('location', 'Username is required').notEmpty();
+    req.check('zip', 'Username is required').notEmpty();
 
     let errors = req.validationErrors();
 
@@ -28,6 +30,8 @@ router.post('/register_user', (req, res) => {
             firstName,
             lastName,
             username,
+            location,
+            zip,
             email,
             password,
             password2,
@@ -42,6 +46,8 @@ router.post('/register_user', (req, res) => {
             firstName: firstName,
             lastName: lastName,
             username: username,
+            address: location,
+            zip: zip,
             email: email,
             password: password,
             phoneNumber: phoneNumber,

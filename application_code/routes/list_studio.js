@@ -65,6 +65,7 @@ router.post('/list_studio', function (req, res) {
                 const newStudio = new Studio({
                     name: req.body.name,
                     address: req.body.location,
+                    zip: req.body.zip,
                     pictures: pictures,
                     coverPicture: pictures[0],
                     description: req.body.description,
