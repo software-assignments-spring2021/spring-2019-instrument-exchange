@@ -7,6 +7,7 @@ const StudioListing = require('../db').StudioListing;
 const Range = require('../db').Range;
 
 const moment = require('moment');
+
 console.log(Range);
 
 // authenticated route
