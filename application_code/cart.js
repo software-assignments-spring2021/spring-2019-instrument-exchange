@@ -6,8 +6,12 @@ module.exports = function Cart(oldCart) {
   this.addRental = function(item, id) {
     var storedItem = this.items[id];
     if (!storedItem) {
-      storedItem = this.items[id] = {item: item, price: 0};
+      // Create a stored item if it doesn't exist and increment the fields
+      storedItem = this.items[id] = {item: item, price: 0, daysRented: 0, cumulativeDaysPrice: 0};
+      storedItem.daysRented = storedItem.item.daysRented;
       storedItem.price = storedItem.item.rentalPrice;
+      storedItem.cumulativeDaysPrice = storedItem.price * storedItem.daysRented;
+      // Total price of items in the cart
       this.totalPrice += storedItem.price;
     }
   }

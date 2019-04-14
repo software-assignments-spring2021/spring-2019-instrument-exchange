@@ -3,6 +3,11 @@ const router = express.Router();
 const Instrument = require('../db').Instrument;
 const Studio = require('../db').Studio;
 const Cart = require('../cart');
+const StudioListing = require('../db').StudioListing;
+const Range = require('../db').Range;
+
+const moment = require('moment');
+console.log(Range);
 
 // authenticated route
 router.get('/studio_listings_buyer', function (req, res) {
@@ -56,49 +61,43 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
     }  else res.render("login_required");
 });
 
-
-// router.get('/add_studio_to_cart/:id', function(req, res){
-//   if (req.user) {
-//
-//     console.log(req.body);
-//     if (req.body.id) {
-//
-//       var studioId = req.body.id;
-//       var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-//
-//       Studio.findById(studioId, function(err, studio) {
-//         // Error handling
-//         if (err) {
-//           return res.redirect('/shopping_cart');
-//         }
-//
-//         cart.addRental(studio, studio._id);
-//         req.session.cart = cart;
-//         console.log(req.session.cart.items);
-//         console.log(cart.items[studio._id]);
-//         res.redirect("studio_listings_buyer");
-//       })
-//     } else {
-//       return res.render("shopping_cart", {cart: req.session.cart});
-//     }
-//   }
-//   else res.render("login_required");
-//
-// });
+// Only post is necessary
 
 router.post('/add_studio/:id', function(req, res) {
   if (req.user) {
     // Params indicates the URL passed.
     if (req.params.id) {
-      var instrumentId = req.params.id;
+      var studioId = req.params.id;
+      var dateRange = req.body.listingDateRange.split(" ");
       var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+      //2019-04-17 to 2019-04-20
+
+      var dayOne = moment(dateRange[0], 'YYYY-MM-DD');
+      var dayTwo = moment(dateRange[2], 'YYYY-MM-DD');
+      var days = dayTwo.diff(dayOne, 'days') + 1;
+
+      var dayOneArray = dateRange[0].split("-");
+      var dayTwoArray = dateRange[2].split("-");
+
+      var dateOne = new Date(dayOneArray[0], dayOneArray[1], dayOneArray[2]);
+      var dateTwo = new Date(dayTwoArray[0], dayTwoArray[1], dayTwoArray[2]);
 
 
-      Studio.findById(instrumentId, function(err, studio) {
+
+      Studio.findById(studioId, function(err, studio) {
         if (err) {
           return res.redirect('/shopping_cart');
         }
 
+        StudioListing.find({studioId: studioId}, function(err, studioListing){
+          var range = new Range();
+        });
+
+
+        // Set datafields
+        studio.startDate = dateOne;
+        studio.endDate = dateTwo;
+        studio.daysRented = days;
         cart.addRental(studio, studio._id);
         req.session.cart = cart;
         Studio.find()
@@ -112,8 +111,6 @@ router.post('/add_studio/:id', function(req, res) {
     }
   } else res.render("login_required");
 });
-
-// Only post is necessary lol
 
 router.get('/add_instrument_to_cart_rental', function(req, res) {
   if (req.user) {
