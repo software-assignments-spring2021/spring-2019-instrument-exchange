@@ -33,14 +33,14 @@
         {{#each instruments}}
             <div class="card">
                 <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.coverPicture }}" alt="Card image cap">
-                </div>
+                
                 <div class="card-body">
                     <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
                 <button class="show-detail"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
-                <div id="bottom-background"></div>
+                </div>
             
 </div>
         {{/each}}
@@ -60,7 +60,7 @@ function openTab(tabName) {
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";  
   }
-  document.getElementById(tabName).style.display = "inline-block";  
+  document.getElementById(tabName).style.display = "block";  
 }
 
 </script>

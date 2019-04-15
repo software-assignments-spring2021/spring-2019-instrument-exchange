@@ -1,26 +1,30 @@
+<link rel="stylesheet" type="text/css" href="/css/studio_listings_buyer-style.css">
 
 
-<form id="filter-div" method="get" action="/studios/applyfilter">
-    <label for="zip-slider">Filter By Distance</label>
-    {{#if sliderValue}}
-        <input type="range" min="0" max="200" value="{{sliderValue}}" class="slider service" id="zip-slider" name="zip_slider">
-        <input type="text" readonly id="slider-value" value="{{sliderValue}} miles">
-    {{else}}
-        <input type="range" min="0" max="200" value="0" class="slider service" id="zip-slider" name="zip_slider">
-        <input type="text" readonly id="slider-value" value="0 miles">
-    {{/if}}
-    <br>
-    <label for="price">Sort Price By:</label>
-    <select name="sort_price" id="price" class="service">
-        <option value="asc">Lowest To Highest</option>
-        <option value="desc">Highest To Lowest</option>
-    </select>
-    <br>
-    <input type="submit" value="Apply Filter">
-</form>
 
 {{#if studios}}
-    <p class="lead">Studios Found</p>
+<span class="title">Studios Found</span>
+    <div id="filter">
+        
+        <form id="filter-div" method="get" action="/studios/applyfilter">
+        
+        <label for="price">Sort Price By:</label>
+        <select name="sort_price" id="price" class="service">
+            <option value="asc">Lowest To Highest</option>
+            <option value="desc">Highest To Lowest</option>
+        </select>
+        <label id="distance-slider" for="zip-slider">Filter By Distance</label>
+        {{#if sliderValue}}
+            <input type="range" min="0" max="200" value="{{sliderValue}}" class="slider service" id="zip-slider" name="zip_slider">
+            <input type="text" readonly id="slider-value" value="{{sliderValue}} miles">
+        {{else}}
+            <input type="range" min="0" max="200" value="0" class="slider service" id="zip-slider" name="zip_slider">
+            <input type="text" readonly id="slider-value" value="0 miles">
+        {{/if}}
+        <input id="filter-button" type="submit" value="Apply Filter">
+</form>
+</div>
+
     <div class="card-columns">
         {{#each studios}}
             <div class="card">
@@ -29,11 +33,11 @@
                     <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }} {{ this.zip }}</h5>
                     <p class="card-text">{{ this.description }}</p>
-                    <button><a href="/studio_detail/buyer/{{ this._id }}">Rent</a></button>
+                    <button id="rent"><a href="/studio_detail/buyer/{{ this._id }}">Rent</a></button>
                 </div>
             </div>
         {{/each}}
     </div>
 {{else}}
-    <p class="lead">Unfortunately, we could not find any Studios. Please check back.</p>
+    <p class="title">Unfortunately, we could not find any Studios.</p>
 {{/if}}
