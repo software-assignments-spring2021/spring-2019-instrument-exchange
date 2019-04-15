@@ -19,6 +19,7 @@ textarea {
 }
 
 /*for currentlistings.hbs*/
+/*
 .card {
   float: left;
   width: 275px;
@@ -35,6 +36,7 @@ textarea {
   display: inline-block;
 }
 
+*/
 .login-css{
       color: white;
       position: absolute;

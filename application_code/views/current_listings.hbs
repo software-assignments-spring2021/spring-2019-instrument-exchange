@@ -1,12 +1,9 @@
 <link rel="stylesheet" type="text/css" href="/css/current-listings-style.css">
-
-
-
-
-<div id="tab">
+    <div id="tab">
     <button class="std-btn" onclick="openTab('studio')">Studios</button>
     <button class="ins-btn" onclick="openTab('instrument')">Instruments</button>
-</div>
+    </div>
+
 
 <div id='studio' class="view">
 {{#if studios}}
@@ -20,7 +17,7 @@
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
-                <button><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
+                <button class="show-detail"><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
             </div>
     </div>
         {{/each}}
@@ -36,13 +33,15 @@
         {{#each instruments}}
             <div class="card">
                 <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.coverPicture }}" alt="Card image cap">
+                </div>
                 <div class="card-body">
                     <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
-                <button class = "button" id="seller"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
-            </div>
+                <button class="show-detail"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
+                <div id="bottom-background"></div>
+            
 </div>
         {{/each}}
 {{else}}
