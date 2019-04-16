@@ -11,7 +11,6 @@ router.get('/current_listings', function(req, res) {
   if (req.user) {
     StudioListing.find({sellerId: req.user._id})
         .then(studioListings => {
-            //console.log(studioListings);
             studioIds = studioListings.map(function(ele) {
             return mongoose.Types.ObjectId(ele.studioId);
           });

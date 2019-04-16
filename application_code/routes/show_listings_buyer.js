@@ -2,16 +2,26 @@ const express = require('express');
 const router = express.Router();
 const Instrument = require('../db').Instrument;
 const Studio = require('../db').Studio;
+const InstrumentListing = require('../db').InstrumentListing;
+const StudioListing = require('../db').StudioListing;
 const api = require('../api_keys').zipAPI;
 const request = require('request');
 
 // authenticated route
 router.get('/studio_listings_buyer', function (req, res) {
     if (req.user) {
-        Studio.find()
-            .then(studios => {
-                console.log(studios);
-                res.render("studio_listings_buyer", {studios: studios})
+        StudioListing.find({sellerId: {$ne: req.user._id}})
+            // getting all the studio ids from the studio listings schema
+            // that do not include this user's id.
+            .then(listings =>{
+                const ids = listings.map(ele => {
+                    return ele.studioId;
+                });
+                Studio.find({_id: {$in: ids}})
+                    .then(studios => {
+                        res.render("studio_listings_buyer", {studios: studios})
+                    })
+                    .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     }
@@ -21,21 +31,29 @@ router.get('/studio_listings_buyer', function (req, res) {
 // authenticated route
 router.get('/instrument_listings_buyer', function (req, res) {
     if (req.user) {
-        Instrument.find()
-            .then(instruments => {
-                console.log(instruments);
-                res.render("instrument_listings_buyer", {instruments: instruments})
+        InstrumentListing.find({sellerId: {$ne: req.user._id}})
+        // getting all the instrument ids from the instrument listings schema
+        // that do not include this user's id.
+            .then(listings =>{
+                const ids = listings.map(ele => {
+                    return ele.instrumentId;
+                });
+                Instrument.find({_id: {$in: ids}})
+                    .then(instruments => {
+                        res.render("instrument_listings_buyer", {instruments: instruments})
+                    })
+                    .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     }
     else res.render("login_required");
 });
 
-
+// authenticated route
 router.get("/studio_detail/:role/:id", function(req, res) {
     if (req.user) {
         const studioId = req.params.id;
-        buyer = req.params.role === "buyer";
+        const buyer = req.params.role === "buyer";
         Studio.findOne({"_id": studioId})
             .then(studio => {
                 res.render("studio_detail", {studio: studio, buyer: buyer});
@@ -44,11 +62,11 @@ router.get("/studio_detail/:role/:id", function(req, res) {
     }  else res.render("login_required");
 });
 
-
+//authenticated route
 router.get("/instrument_detail/:role/:id", function(req, res) {
     if (req.user) {
         const instrumentId = req.params.id;
-        buyer = req.params.role === "buyer";
+        const buyer = req.params.role === "buyer";
         Instrument.findOne({"_id": instrumentId})
             .then(instrument => {
                 res.render("instrument_detail", {instrument: instrument, buyer: buyer});
@@ -58,7 +76,7 @@ router.get("/instrument_detail/:role/:id", function(req, res) {
 });
 
 
-// for location service and price sorting
+// for location service for STUDIOS and price sorting
 router.get('/studios/applyfilter', function(req, res) {
     if (req.user) {
         const distance = req.query.zip_slider;
@@ -72,10 +90,9 @@ router.get('/studios/applyfilter', function(req, res) {
             zipCodes = body.zip_codes.map(function(ele) {
                 return ele.zip_code;
             });
-            console.log(zipCodes);
+            console.log('list of zip codes found by API:', zipCodes);
             Studio.find({zip: {$in: zipCodes}})
                 .then( studios => {
-                    console.log(studios);
                     res.render("studio_listings_buyer", {studios: studios, sliderValue: distance});
                 })
                 .catch(err => console.log(err));
@@ -83,5 +100,29 @@ router.get('/studios/applyfilter', function(req, res) {
     } else res.render("login_required");
 });
 
+// for location service  for INSTRUMENTS and price sorting
+router.get('/instruments/applyfilter', function(req, res) {
+    if (req.user) {
+        const distance = req.query.zip_slider;
+        const price = req.query.sort_price;
+        const userZip = req.user.zip;
+        // creating the request url for zip api.
+        const url = `https://www.zipcodeapi.com/rest/${api}/radius.json/${userZip}/${distance}/mile`;
+        console.log(url);
+        request(url, {json: true}, (err, response, body) => {
+            if (err) console.log(err);
+            zipCodes = body.zip_codes.map(function(ele) {
+                return ele.zip_code;
+            });
+            console.log(zipCodes);
+            Instrument.find({zip: {$in: zipCodes}})
+                .then( instruments => {
+                    console.log("these are instruments found", instruments);
+                    res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance});
+                })
+                .catch(err => console.log(err));
+        });
+    } else res.render("login_required");
+});
 
 module.exports = router;
