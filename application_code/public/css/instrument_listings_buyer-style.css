@@ -1,49 +1,3 @@
-
-#tab{
-    text-align: center;
-}
-
-.std-btn {
-    background-color: #444444;
-    border:0;
-    box-shadow: 0px 10px 14px -7px #3b3a3b;
-    color: white;
-    margin-right: 100px;
-    margin-bottom: 50px;
-    padding: 20px 150px;
-    top:100%;
-    font-size:20px;
-	text-decoration:none;
-    text-shadow:0px 1px 0px #000000;
-}
-.std-btn:focus{
-    outline:0;
-    background-color: #111111;
-}
-.std-btn:hover{
-    background-color: #111111;
-}
-.ins-btn{
-    border:0;
-    background-color: #444444;
-    box-shadow: 0px 10px 14px -7px #3b3a3b;
-    color: white;
-    margin-left: 100px;
-    margin-bottom: 50px;
-    padding: 20px 150px;
-    top: 100%;
-
-    font-size:20px;
-	text-decoration:none;
-    text-shadow:0px 1px 0px #000000;
-}
-.ins-btn:focus{
-    outline:0;
-    background-color: #111111;
-}
-.ins-btn:hover{
-    background-color: #111111;
-}
 .card{
     background-color: white;
     border-radius: 15px 15px 0px 0px;
@@ -53,15 +7,9 @@
     float:left;
 }
 
-.card-body{
-
-}
-
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-
-
+}
 
 .card-text{
     color: #FFFFFF;
@@ -69,17 +17,6 @@
     background-color: #444444;
     height: 20px;
     text-align: left;  
-}
-
-#empty-studios{
-    background-color: #444444;
-    box-shadow: 0px 10px 14px -7px #3b3a3b;
-    color: white;
-    display: inline-block;
-    margin-top: 50px;
-    padding: 13px 32px;
-    text-align: center;
-    top: 150%;
 }
 
 #empty-instruments{
@@ -91,9 +28,57 @@
     text-align: center;
 }
 
-.title{
-    margin-top: 10px;
+
+#distance-slider{
+    padding-left: 2em;
+}
+
+input{
+    top:100%;
+    text-align: center;
+    background-color: #666666;
+    border:none;
+    color: white;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+
+}
+
+#filter{
+    display:inline-block;
+    background-color: #666666;
+    color: white;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    padding-left: 1em;
     margin-bottom: 10px;
+	text-decoration:none;   
+}
+
+#filter-button{
+    background-color: #222;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#filter-button:hover{
+    background-color: #111111;
+}
+
+span{
+    background-color: #444444;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    color: white;
+    display:block;
+    top:100%;
+    padding: 15px 32px;
+    text-align: center;
+    float: left;
+    width: 280px;
 }
 
 p{
