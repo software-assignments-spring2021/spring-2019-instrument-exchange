@@ -1,0 +1,42 @@
+/*for studio detail page*/
+.studio-carousel {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+  
+.background {
+    background-color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    text-align: left;
+    color: black;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10px;
+    padding: 20px;
+}
+.studio-picture {
+    width: 500px;
+    height: 500px;
+} 
+.button:hover,.form button:active,.form button:focus {
+    background: #302f2f
+}
+  
+.button a {
+    color: #b3b5b7;
+    text-decoration: none;
+}
+  
+.slick-arrow {
+    background: black;
+}
+  
+.slick-arrow:hover {
+    background: black;
+}
+  
+.slider {
+    width: 50%;
+}

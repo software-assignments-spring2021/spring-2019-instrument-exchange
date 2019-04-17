@@ -1,4 +1,11 @@
+<link rel="stylesheet" type="text/css" href="/css/current-listings-style.css">
+    <div id="tab">
+    <button class="std-btn" onclick="openTab('studio')">Studios</button>
+    <button class="ins-btn" onclick="openTab('instrument')">Instruments</button>
+    </div>
 
+
+<div id='studio' class="view">
 {{#if studios}}
     <p class="lead">Here are your Studio Listings</p>
     <div class="card-columns">
@@ -10,32 +17,52 @@
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
-                <button><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
+                <button class="show-detail"><a href="/studio_detail/seller/{{ this._id }}">Show Details</a></button>
             </div>
-
-        {{/each}}
     </div>
+        {{/each}}
 {{else}}
-    <p class="lead">You currently don't have any listings for studios</p>
+    <p class="lead" id="empty-studios">You currently don't have any listings for studios</p>
 {{/if}}
+</div>
 
-
+<div id='instrument' class="view">
 {{#if instruments}}
     <p class="lead">Here are your Instruments Listings</p>
     <div class="card-columns">
         {{#each instruments}}
             <div class="card">
                 <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.coverPicture }}" alt="Card image cap">
+                
                 <div class="card-body">
                     <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
                 </div>
-                <button class = "button" id="seller"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
-            </div>
-
+                <button class="show-detail"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
+                </div>
+            
+</div>
         {{/each}}
-    </div>
 {{else}}
-    <p class="lead">You currently don't have any listings for Instruments</p>
+    <p class="lead" id="empty-instruments">You currently don't have any listings for Instruments</p>
 {{/if}}
+
+  </div>
+
+<script>
+    window.onload = function() {
+    document.getElementById('instrument').style.display = 'none';
+};
+
+function openTab(tabName) {
+  var i;
+  var x = document.getElementsByClassName("view");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(tabName).style.display = "block";  
+}
+
+</script>
+

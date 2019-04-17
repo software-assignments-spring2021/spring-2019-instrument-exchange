@@ -1,0 +1,124 @@
+.card{
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+    margin-top: 10px;
+    width: 300px;
+    margin-left: 20px;
+    float:left;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-text{
+    color: #FFFFFF;
+    padding: 10px;
+    background-color: #444444;
+    height: 20px;
+    text-align: left;  
+}
+
+#empty-instruments{
+    background-color: #444444;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    color: white;
+    display: inline-block;
+    padding: 13px 32px;
+    text-align: center;
+}
+
+
+#distance-slider{
+    padding-left: 2em;
+}
+
+input{
+    top:100%;
+    text-align: center;
+    background-color: #666666;
+    border:none;
+    color: white;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+
+}
+
+#filter{
+    display:inline-block;
+    background-color: #666666;
+    color: white;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    padding-left: 1em;
+    margin-bottom: 10px;
+	text-decoration:none;   
+}
+
+#filter-button{
+    background-color: #222;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#filter-button:hover{
+    background-color: #111111;
+}
+
+span{
+    background-color: #444444;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    color: white;
+    display:block;
+    top:100%;
+    padding: 15px 32px;
+    text-align: center;
+    float: left;
+    width: 280px;
+}
+
+p{
+    background-color: #444444;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    color: white;
+    display: block;
+    padding: 13px 32px;
+    text-align: center;
+    width: 280px;
+
+}
+
+.rent_purchase{
+    background-color: #222222;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size:16px;
+	font-weight:bold;
+    position: relative;
+    padding: 20px;
+    display: block;
+    width: 300px;
+    outline:none;
+    border:0;
+
+}
+.rent_purchase a{
+    text-decoration: none;
+    color:white;
+}
+.rent_purchase:hover{
+    background-color: #111111;
+}
+img{
+    border-radius: 15px 15px 0px 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 200px;
+}

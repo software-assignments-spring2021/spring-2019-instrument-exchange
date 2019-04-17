@@ -1,0 +1,33 @@
+
+.login-css{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+    z-index: 3;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-css {
+width: 360px;
+padding: 8% 0 0;
+margin: auto 0;
+}
+
+.login-container {
+margin: auto 0;
+margin-top: 20px;
+}
+
+
+#login-css .container {
+position: relative;
+z-index: 1;
+max-width: 300px;
+margin: 0 auto;
+}
