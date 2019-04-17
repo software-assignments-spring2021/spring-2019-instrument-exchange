@@ -1,6 +1,19 @@
+<link rel="stylesheet" type="text/css" href="/css/instrument_listings_buyer-style.css">
 
-<form id="filter-div" method="get" action="/instruments/applyfilter">
-    <label for="zip-slider">Filter By Distance</label>
+
+
+{{#if instruments}}
+    <span>Instruments Found</span>
+    <div id="filter">
+
+    <form id="filter-div" method="get" action="/instruments/applyfilter">
+        <label for="price">Sort Price By:</label>
+    <select name="sort_price" id="price" class="service">
+        <option value="default">None</option>
+        <option value="asc">Lowest To Highest</option>
+        <option value="desc">Highest To Lowest</option>
+    </select>
+    <label id="distance-slider" for="zip-slider">Filter By Distance</label>
     {{#if sliderValue}}
         <input type="range" min="0" max="200" value="{{sliderValue}}" class="slider service" id="zip-slider" name="zip_slider">
         <input type="text" readonly id="slider-value" value="{{sliderValue}} miles">
@@ -8,19 +21,11 @@
         <input type="range" min="0" max="200" value="0" class="slider service" id="zip-slider" name="zip_slider">
         <input type="text" readonly id="slider-value" value="0 miles">
     {{/if}}
-    <br>
-    <label for="price">Sort Price By:</label>
-    <select name="sort_price" id="price" class="service">
-        <option value="default">None</option>
-        <option value="asc">Lowest To Highest</option>
-        <option value="desc">Highest To Lowest</option>
-    </select>
-    <br>
-    <input type="submit" value="Apply Filter">
-</form>
 
-{{#if instruments}}
-    <p class="lead">Instruments Found</p>
+    <input id="filter-button" type="submit" value="Apply Filter">
+</form>
+</div>
+
     <div class="card-columns">
         {{#each instruments}}
             <div class="card">
@@ -29,11 +34,11 @@
                     <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }}</h5>
                     <p class="card-text">{{ this.description }}</p>
-                    <button class="button" id ="buyer"><a href="/instrument_detail/buyer/{{ this._id }}">Rent/Purchase</a></button>
+                    <button class="rent_purchase"><a href="/instrument_detail/buyer/{{ this._id }}">Rent/Purchase</a></button>
                 </div>
             </div>
         {{/each}}
     </div>
 {{else}}
-    <p class="lead">Unfortunately we could not find any Instruments. PLease check back.</p>
+    <p class="title">Unfortunately we could not find any Instruments.</p>
 {{/if}}

@@ -7,50 +7,41 @@
     <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="/css/daterangepicker.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/form-style.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar-style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-css">
-                <ul>
-                <li><a class="navbar-brand" href="/">Instrument Exchange</a></li>
-                        {{#if isAuthenticated}}
-                        <div class="dropdown">
-                            <li><a class="nav-item nav-link" href="/seller_portal">Seller Portal</a></li>
-                                <ul>
-                                    <div class="dropdown-content">
-                                        <!--<li><a href="/profile">Profile</a></li>-->
-                                        <li><a href="/current_listings">Current Listings</a></li>
-                                        <li><a href="/studio_list">List A Studio</a></li>
-                                        <li><a href="/instrument_list">List An Instrument</a></li>
-                                    </div>
-                                </ul>
-                        </div>
-                        <div class="dropdown">
-                            <li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>
-                            <ul>
-                                <div class="dropdown-content">
-                                    <li><a href="/studio_listings_buyer">Browse Studios</a></li>
-                                    <li><a href="/instrument_listings_buyer">Browse Instruments</a></li>
-                                    <li><a href="#">Shopping Cart</a></li>
-                                </div>
-                            </ul>
-                        </div>
-                            <!--<li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>-->
-                            <li><a class="nav-item nav-link" href="/profile">Profile</a></li>
-                            <li><a class="nav-item nav-link" href="#">Shopping Cart</a></li>
-                            <li><a class="nav-item nav-link" href="/logout">Logout</a></li>
-                </ul>
-                        {{else}}
-                            <li><a class="nav-item nav-link" href="/register">Register</a></li>
-                            <li><a class="nav-item nav-link" href="/login">Login</a></li>
-                        {{/if}}
 
-                </div>
-            </div>
-        </div>
+    <nav>
+        <ul>
+            <li><a class="navbar-brand" href="/">Instrument Exchange</a></li>
+                    {{#if isAuthenticated}}   
+                    <div class="dropdown-seller">                      
+                        <li><a class="nav-item nav-link" href="/seller_portal">Seller Portal</a></li>
+                            <div class="dropdown-seller-content">                                
+                                <a href="/current_listings">Current Listings</a>
+                                <a href="/studio_list">List A Studio</a>
+                                <a href="/instrument_list">List An Instrument</a>
+                            </div> 
+                    </div>
+                        <div class="dropdown-buyer">                      
+                        <li><a class="nav-item nav-link" href="/buyer_portal">Buyer Portal</a></li>
+                            <div class="dropdown-buyer-content">
+                                <a href="/studio_listings_buyer">Browse Studios</a>
+                                <a href="/instrument_listings_buyer">Browse Instruments</a>
+                                <a href="#">Shopping Cart</a>
+                            </div>
+                        </div>                          
+                        <li><a class="nav-item nav-link" href="/profile">Profile</a></li>
+                        <li><a class="nav-item nav-link" href="#">Shopping Cart</a></li>
+                        <li id="logoutbtn"><a class="nav-item nav-link" href="/logout">Logout</a></li>
+        
+                    {{else}}
+                        <li><a class="nav-item nav-link" href="/register">Register</a></li>
+                        <li><a class="nav-item nav-link" href="/login">Login</a></li>
+                    {{/if}}
+        </ul>
     </nav>
 
     <div class="container">
