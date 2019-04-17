@@ -111,14 +111,14 @@ router.get('/studios/applyfilter', function(req, res) {
                     })
                     .catch(err => console.log(err));
             } else if (price === "asc") {
-                StudioListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: 1})
+                StudioListing.find({sellerId: {$ne: req.user._id}})
                 // getting all the studio ids from the studio listings schema
                 // that do not include this user's id.
                     .then(listings =>{
                         const ids = listings.map(ele => {
                             return ele.studioId;
                         });
-                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}}).sort({rentalPrice: 1})
                             .then(studios => {
                                 res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price})
                             })
@@ -126,14 +126,14 @@ router.get('/studios/applyfilter', function(req, res) {
                     })
                     .catch(err => console.log(err));
             } else if (price === "desc") {
-                StudioListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: -1})
+                StudioListing.find({sellerId: {$ne: req.user._id}})
                 // getting all the studio ids from the studio listings schema
                 // that do not include this user's id.
                     .then(listings =>{
                         const ids = listings.map(ele => {
                             return ele.studioId;
                         });
-                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}}).sort({rentalPrice: -1})
                             .then(studios => {
                                 res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price})
                             })
@@ -176,14 +176,14 @@ router.get('/instruments/applyfilter', function(req, res) {
                     })
                     .catch(err => console.log(err));
             } else if (price === "asc") {
-                InstrumentListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: 1})
+                InstrumentListing.find({sellerId: {$ne: req.user._id}})
                 // getting all the studio ids from the studio listings schema
                 // that do not include this user's id.
                     .then(listings =>{
                         const ids = listings.map(ele => {
                             return ele.instrumentId;
                         });
-                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}}).sort({rentalPrice: 1})
                             .then(instruments => {
                                 res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price})
                             })
@@ -191,14 +191,14 @@ router.get('/instruments/applyfilter', function(req, res) {
                     })
                     .catch(err => console.log(err));
             } else if (price === "desc") {
-                InstrumentListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: -1})
+                InstrumentListing.find({sellerId: {$ne: req.user._id}})
                 // getting all the studio ids from the studio listings schema
                 // that do not include this user's id.
                     .then(listings =>{
                         const ids = listings.map(ele => {
                             return ele.instrumentId;
                         });
-                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}}).sort({rentalPrice: -1})
                             .then(instruments => {
                                 res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price})
                             })

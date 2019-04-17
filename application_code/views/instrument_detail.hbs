@@ -15,10 +15,10 @@
     <p> <strong>Purchase Price</strong>: ${{ instrument.purchasePrice }}</p>
     <p> <strong>Studio Description</strong>: {{ instrument.description }} </p>
     {{#if buyer}}
-    <label for="listing-date-range">Rental Period</label>
     <div class="form">
       <form method="post" action="/add_instrument_rental/{{instrument.id}}" enctype="application/x-www-form-urlencoded">
         <div class="form-group">
+            <label for="listing-date-range">Rental Period:</label>
           <input id="listing-date-range" name="listingDateRange"><br>
         </div>
         <button type="submit" class="btn btn-primary">Rent Instrument</button>
