@@ -93,30 +93,58 @@ router.get('/studios/applyfilter', function(req, res) {
             zipCodes = body.zip_codes.map(function(ele) {
                 return ele.zip_code;
             });
+
             // apply the filters
             if (price === "default") {
-                Studio.find({zip: {$in: zipCodes}})
-                    .then( studios => {
-                        res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price});
+                StudioListing.find({sellerId: {$ne: req.user._id}})
+                // getting all the studio ids from the studio listings schema
+                // that do not include this user's id.
+                    .then(listings =>{
+                        const ids = listings.map(ele => {
+                            return ele.studioId;
+                        });
+                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                            .then(studios => {
+                                res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price})
+                            })
+                            .catch(err => console.log(err));
                     })
                     .catch(err => console.log(err));
             } else if (price === "asc") {
-                Studio.find({zip: {$in: zipCodes}}).sort({rentalPrice: 1})
-                    .then( studios => {
-                        res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price});
+                StudioListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: 1})
+                // getting all the studio ids from the studio listings schema
+                // that do not include this user's id.
+                    .then(listings =>{
+                        const ids = listings.map(ele => {
+                            return ele.studioId;
+                        });
+                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                            .then(studios => {
+                                res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price})
+                            })
+                            .catch(err => console.log(err));
                     })
                     .catch(err => console.log(err));
-
             } else if (price === "desc") {
-                Studio.find({zip: {$in: zipCodes}}).sort({rentalPrice: -1})
-                    .then( studios => {
-                        res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price});
+                StudioListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: -1})
+                // getting all the studio ids from the studio listings schema
+                // that do not include this user's id.
+                    .then(listings =>{
+                        const ids = listings.map(ele => {
+                            return ele.studioId;
+                        });
+                        Studio.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                            .then(studios => {
+                                res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price})
+                            })
+                            .catch(err => console.log(err));
                     })
                     .catch(err => console.log(err));
             }
         });
     } else res.render("login_required");
 });
+
 
 // for location service  for INSTRUMENTS and price sorting
 router.get('/instruments/applyfilter', function(req, res) {
@@ -133,22 +161,48 @@ router.get('/instruments/applyfilter', function(req, res) {
                 return ele.zip_code;
             });
             if (price === "default") {
-                Instrument.find({zip: {$in: zipCodes}})
-                    .then( instruments => {
-                        res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price});
+                InstrumentListing.find({sellerId: {$ne: req.user._id}})
+                // getting all the studio ids from the studio listings schema
+                // that do not include this user's id.
+                    .then(listings =>{
+                        const ids = listings.map(ele => {
+                            return ele.instrumentId;
+                        });
+                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                            .then(instruments => {
+                                res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price})
+                            })
+                            .catch(err => console.log(err));
                     })
                     .catch(err => console.log(err));
             } else if (price === "asc") {
-                Instrument.find({zip: {$in: zipCodes}}).sort({rentalPrice: 1})
-                    .then( instruments => {
-                        res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price});
+                InstrumentListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: 1})
+                // getting all the studio ids from the studio listings schema
+                // that do not include this user's id.
+                    .then(listings =>{
+                        const ids = listings.map(ele => {
+                            return ele.instrumentId;
+                        });
+                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                            .then(instruments => {
+                                res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price})
+                            })
+                            .catch(err => console.log(err));
                     })
                     .catch(err => console.log(err));
-
             } else if (price === "desc") {
-                Instrument.find({zip: {$in: zipCodes}}).sort({rentalPrice: -1})
-                    .then( instruments => {
-                        res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price});
+                InstrumentListing.find({sellerId: {$ne: req.user._id}}).sort({rentalPrice: -1})
+                // getting all the studio ids from the studio listings schema
+                // that do not include this user's id.
+                    .then(listings =>{
+                        const ids = listings.map(ele => {
+                            return ele.instrumentId;
+                        });
+                        Instrument.find({_id: {$in: ids}, zip: {$in: zipCodes}})
+                            .then(instruments => {
+                                res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price})
+                            })
+                            .catch(err => console.log(err));
                     })
                     .catch(err => console.log(err));
             }
