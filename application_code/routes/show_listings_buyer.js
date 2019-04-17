@@ -138,7 +138,7 @@ router.post('/add_studio/:id', function(req, res) {
       if (!regex.test(req.body.listingDateRange)) {
         Studio.findOne({"_id": req.params.id})
             .then(studio => {
-                res.render("studio_detail", {studio: studio});
+                res.render("studio_detail", {studio: studio, error: "You must specify Rental Period"});
             })
             .catch(err => console.log(err));
       } else {
@@ -201,7 +201,7 @@ router.post('/add_instrument_rental/:id', function(req, res) {
       if (!regex.test(req.body.listingDateRange)) {
         Instrument.findOne({"_id": req.params.id})
             .then(instrument => {
-                res.render("instrument_detail", {instrument: instrument, buyer: "buyer"});
+                res.render("instrument_detail", {instrument: instrument, buyer: "buyer", error: "You must specify Rental Period"});
             })
             .catch(err => console.log(err));
       } else {
