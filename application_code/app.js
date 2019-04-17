@@ -8,6 +8,7 @@ const expressValidator = require('express-validator');
 const flash = require('flash');
 const session = require('express-session');
 const path = require('path');
+const hbs = require('hbs');
 const publicPath = path.resolve(__dirname, 'public');
 const passport = require('passport');
 
@@ -46,6 +47,10 @@ app.use(function(req, res, next) {
 
 // view engine setup
 app.set('view engine', 'hbs');
+// adding custom helpers for hbs
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
+});
 app.set('views', path.join(__dirname, 'views'));
 var hbs = require('hbs');
 
