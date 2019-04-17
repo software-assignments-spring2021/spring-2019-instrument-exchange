@@ -43,6 +43,9 @@ const InstrumentSchema = new Schema({
     rentalPrice: {type: Number, required: true},
     purchasePrice: {type: Number, required: true},
     isRental: {type: Boolean, default: false},
+    startDate: {type: String, default: null},
+    endDate: {type: String, default: null},
+    classType: {type: String, default: "Instrument"},
     booked: [RangeSchema] // array of date ranges
 });
 
@@ -56,6 +59,9 @@ const StudioSchema = new Schema({
     rentalPrice: {type: Number, required: true},
     daysRented: {type: Number, default: 1},
     isRental: {type: Boolean, default: true},
+    startDate: {type: String, default: null},
+    endDate: {type: String, default: null},
+    classType: {type: String, default: "Studio"},
     booked: [RangeSchema] // array of date ranges
 });
 

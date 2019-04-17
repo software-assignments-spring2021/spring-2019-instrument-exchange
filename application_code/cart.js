@@ -18,12 +18,15 @@ module.exports = function Cart(oldCart) {
 
   this.addPurchase = function(item, id) {
     var storedItem = this.items[id];
-    var storedItem = this.items[id];
     if (!storedItem) {
       storedItem = this.items[id] = {item: item, price: 0};
       storedItem.price = storedItem.item.rentalPrice;
       this.totalPrice += storedItem.price;
     }
+  }
+
+  this.deleteItem = function(id) {
+    delete this.items[id];
   }
 
   this.generateArray = function() {

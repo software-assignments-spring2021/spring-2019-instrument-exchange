@@ -9,7 +9,6 @@
     <p> <strong>Rental Price</strong>: ${{ studio.rentalPrice }} per Day</p>
     <p> <strong>Studio Description</strong>: {{ studio.description }} </p>
     <div class="form">
-    {{#if buyer}}
     <form method="post" action="/add_studio/{{studio.id}}" enctype="application/x-www-form-urlencoded">
       <div class="form-group">
         <input id="listing-date-range" name="listingDateRange"> <br>
@@ -17,6 +16,5 @@
     <!-- Lead back to the listings page, and add to the corresponding shopping cart. -->
     <button type="submit" class="btn btn-primary">Rent Studio</button>
     </form>
-    {{/if}}
   </div>
 </div>

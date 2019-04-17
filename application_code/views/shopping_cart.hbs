@@ -13,11 +13,24 @@
         <div class="card-body">
             <h3 class="card-text">{{ this.item.name }}</h3>
             <h5 class="card-text">{{ this.item.address }}</h5>
-            <h5 class="card-text">Type: {{ this.item.daysRented }}</h5>
+
             {{#ifeq this.item.isRental true}}
+              <h5 class="card-text">Type: Rental</h5>
               <h5 class="card-text">Rental Duration: {{ this.item.startDate }} to {{ this.item.endDate }}</h5>
+              <p class="card-text">Cost: ${{ this.price }} * {{ this.daysRented }} days = ${{ this.cumulativeDaysPrice }}</p>
+            {{else}}
+              <h5 class="card-text">Type: Purchase</h5>
+              <p class="card-text">Cost: ${{ this.price }}</p>
             {{/ifeq}}
-            <p class="card-text">Cost: ${{ this.price }} * {{ this.daysRented }} days = ${{ this.cumulativeDaysPrice }}</p>
+        </div>
+
+
+        <div class="card-body">
+          <div class="form">
+            <form method="post" action="/delete_item/{{this.item._id}}" enctype="application/x-www-form-urlencoded">
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+          </div>
         </div>
       </div>
       {{/each}}
