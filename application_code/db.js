@@ -2,16 +2,21 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
-
 // defining schemas for database
 var date = new Date(Date.now());
 var formattedDate = date.toString().split(" ");
+
+const RangeSchema = new Schema({
+    start: {type: Date, default: Date.now()},
+    end: {type: Date, default: Date.now()}
+});
 
 const UserSchema = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
     username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
+    phoneNumber: {type: Number, required: true},
     password: {type:String, required: true},
     address: {type: String, required: true},
     zip: {type:String, required: true},
@@ -36,8 +41,12 @@ const InstrumentSchema = new Schema({
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
     rentalPrice: {type: Number, required: true},
-    purchasePrice: {type: Number, required: true}
-
+    purchasePrice: {type: Number, required: true},
+    isRental: {type: Boolean, default: false},
+    startDate: {type: String, default: null},
+    endDate: {type: String, default: null},
+    classType: {type: String, default: "Instrument"},
+    booked: [RangeSchema] // array of date ranges
 });
 
 const StudioSchema = new Schema({
@@ -47,24 +56,23 @@ const StudioSchema = new Schema({
     pictures: [String],
     coverPicture: {type: String, required: true},
     description: {type: String, required: true},
-    rentalPrice: {type: Number, required: true}
-});
-
-const RangeSchema = new Schema({
-    start: {type: Date, default: Date.now()},
-    end: {type: Date, default: Date.now()}
+    rentalPrice: {type: Number, required: true},
+    daysRented: {type: Number, default: 1},
+    isRental: {type: Boolean, default: true},
+    startDate: {type: String, default: null},
+    endDate: {type: String, default: null},
+    classType: {type: String, default: "Studio"},
+    booked: [RangeSchema] // array of date ranges
 });
 
 const InstrumentListingSchema = new Schema({
     instrumentId : {type: Schema.Types.ObjectId, ref: "Instrument"},
     sellerId: {type: Schema.Types.ObjectId, ref: "User"},
-    booked: [RangeSchema] // array of date ranges
 });
 
 const StudioListingSchema = new Schema({
     studioId: {type: Schema.Types.ObjectId, ref:"Studio"},
     sellerId: {type: Schema.Types.ObjectId, ref:"User"},
-    booked: [RangeSchema] // array of date ranges
 });
 
 const InstrumentTransactionSchema = new Schema({
@@ -95,8 +103,8 @@ const StudioTransactionSchema = new Schema({
 });
 
 
-
 // registering the models
+const Range = mongoose.model('Range', RangeSchema);
 const User = mongoose.model('User', UserSchema);
 const Instrument = mongoose.model('Instrument', InstrumentSchema);
 const Studio = mongoose.model('Studio', StudioSchema);
@@ -105,8 +113,8 @@ const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionS
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
 
-
 module.exports = {
+    Range: Range,
     User: User,
     Instrument: Instrument,
     Studio: Studio,

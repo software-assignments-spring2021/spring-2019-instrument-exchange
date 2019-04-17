@@ -1,0 +1,43 @@
+<h1>My Shopping Cart</h1>
+
+{{#if cart.items}}
+  <div class="card-columns">
+      {{#each cart.items}}
+      <div class="card">
+        {{#ifeq this.item.classType "Studio"}}
+          <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
+        {{/ifeq}}
+        {{#ifeq this.item.classType "Instrument"}}
+          <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.item.coverPicture }}" alt="Card image cap">
+        {{/ifeq}}
+        <div class="card-body">
+            <h3 class="card-text">{{ this.item.name }}</h3>
+            <h5 class="card-text">{{ this.item.address }}</h5>
+
+            {{#ifeq this.item.isRental true}}
+              <h5 class="card-text">Type: Rental</h5>
+              <h5 class="card-text">Rental Duration: {{ this.item.startDate }} to {{ this.item.endDate }}</h5>
+              <p class="card-text">Cost: ${{ this.price }} * {{ this.daysRented }} days = ${{ this.cumulativeDaysPrice }}</p>
+            {{else}}
+              <h5 class="card-text">Type: Purchase</h5>
+              <p class="card-text">Cost: ${{ this.price }}</p>
+            {{/ifeq}}
+        </div>
+
+
+        <div class="card-body">
+          <div class="form">
+            <form method="post" action="/delete_item/{{this.item._id}}" enctype="application/x-www-form-urlencoded">
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+  </div>
+{{else}}
+  <h1>cart is empty</h1>
+{{/if}}
+
+<!-- Button should lead to checkout page -->
+<a class="btn btn-primary" id="checkout" href="/checkout">Check out</a>

@@ -1,15 +1,26 @@
+
 <link rel="stylesheet" type="text/css" href="/css/studio_detail-style.css">
+
 <div class="background">
     <div class="image-carousel">
         {{#each studio.pictures}}
             <img class="studio-picture" src="/uploads/studios/{{ this }}">
         {{/each}}
     </div>
+    <p> <strong>Name</strong>: {{ studio.name }}</p>
     <p> <strong>Location</strong>: {{ studio.address }}</p>
     <p> <strong>Rental Price</strong>: ${{ studio.rentalPrice }} per Day</p>
     <p> <strong>Studio Description</strong>: {{ studio.description }} </p>
-    {{#if buyer}}
-    <input id="listing-date-range"> <br>
-    <button><a href="#">Rent Studio</a></button>
+    <div class="form">
+    <form method="post" action="/add_studio/{{studio.id}}" enctype="application/x-www-form-urlencoded">
+      <div class="form-group">
+        <input id="listing-date-range" name="listingDateRange"> <br>
+      </div>
+    <!-- Lead back to the listings page, and add to the corresponding shopping cart. -->
+    <button type="submit" class="btn btn-primary">Rent Studio</button>
+    {{#if error}}
+        <p>{{error}}</p>
     {{/if}}
+    </form>
+  </div>
 </div>

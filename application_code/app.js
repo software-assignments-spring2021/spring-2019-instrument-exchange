@@ -53,6 +53,10 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
 });
 app.set('views', path.join(__dirname, 'views'));
 
+hbs.registerHelper("ifeq", function(value1, value2, options){
+  return (value1 == value2) ? options.fn(this) : options.inverse(this);
+});
+
 // Express Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
@@ -88,6 +92,8 @@ const instrumentListing = require('./routes/list_instrument');
 const profile = require('./routes/profile');
 const currentListings = require('./routes/current_listings');
 const showListingsBuyer = require('./routes/show_listings_buyer');
+const shoppingCart = require('./routes/shopping_cart');
+const checkout = require('./routes/checkout');
 
 // route middleware goes here.
 app.use('/', register);
@@ -103,6 +109,9 @@ app.use('/', instrumentListing);
 app.use('/', profile);
 app.use('/', currentListings);
 app.use('/', showListingsBuyer);
+app.use('/', shoppingCart);
+app.use('/', checkout);
+
 // firing up the node server
 const appConnection = function () {
     app.listen(process.env.PORT || 3000, () => {
