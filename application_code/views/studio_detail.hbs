@@ -1,3 +1,4 @@
+
 <div class="background">
     <div class="image-carousel">
         {{#each studio.pictures}}
@@ -15,6 +16,9 @@
       </div>
     <!-- Lead back to the listings page, and add to the corresponding shopping cart. -->
     <button type="submit" class="btn btn-primary">Rent Studio</button>
+    {{#if error}}
+        <p>{{error}}</p>
+    {{/if}}
     </form>
   </div>
 </div>

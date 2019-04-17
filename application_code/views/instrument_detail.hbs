@@ -25,6 +25,9 @@
       <form method="post" action="/add_instrument_purchase/{{instrument.id}}" enctype="application/x-www-form-urlencoded">
         <button type="submit" class="btn btn-primary">Purchase Instrument</button>
       </form>
+        {{#if error}}
+            <p>{{error}}</p>
+        {{/if}}
     </div>
     {{/if}}
 </div>
