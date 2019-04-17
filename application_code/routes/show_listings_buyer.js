@@ -90,12 +90,27 @@ router.get('/studios/applyfilter', function(req, res) {
             zipCodes = body.zip_codes.map(function(ele) {
                 return ele.zip_code;
             });
-            console.log('list of zip codes found by API:', zipCodes);
-            Studio.find({zip: {$in: zipCodes}})
-                .then( studios => {
-                    res.render("studio_listings_buyer", {studios: studios, sliderValue: distance});
-                })
-                .catch(err => console.log(err));
+            // apply the filters
+            if (price === "default") {
+                Studio.find({zip: {$in: zipCodes}})
+                    .then( studios => {
+                        res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price});
+                    })
+                    .catch(err => console.log(err));
+            } else if (price === "asc") {
+                Studio.find({zip: {$in: zipCodes}}).sort({rentalPrice: 1})
+                    .then( studios => {
+                        res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price});
+                    })
+                    .catch(err => console.log(err));
+
+            } else if (price === "desc") {
+                Studio.find({zip: {$in: zipCodes}}).sort({rentalPrice: -1})
+                    .then( studios => {
+                        res.render("studio_listings_buyer", {studios: studios, sliderValue: distance, price: price});
+                    })
+                    .catch(err => console.log(err));
+            }
         });
     } else res.render("login_required");
 });
@@ -114,13 +129,26 @@ router.get('/instruments/applyfilter', function(req, res) {
             zipCodes = body.zip_codes.map(function(ele) {
                 return ele.zip_code;
             });
-            console.log(zipCodes);
-            Instrument.find({zip: {$in: zipCodes}})
-                .then( instruments => {
-                    console.log("these are instruments found", instruments);
-                    res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance});
-                })
-                .catch(err => console.log(err));
+            if (price === "default") {
+                Instrument.find({zip: {$in: zipCodes}})
+                    .then( instruments => {
+                        res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price});
+                    })
+                    .catch(err => console.log(err));
+            } else if (price === "asc") {
+                Instrument.find({zip: {$in: zipCodes}}).sort({rentalPrice: 1})
+                    .then( instruments => {
+                        res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price});
+                    })
+                    .catch(err => console.log(err));
+
+            } else if (price === "desc") {
+                Instrument.find({zip: {$in: zipCodes}}).sort({rentalPrice: -1})
+                    .then( instruments => {
+                        res.render("instrument_listings_buyer", {instruments: instruments, sliderValue: distance, price: price});
+                    })
+                    .catch(err => console.log(err));
+            }
         });
     } else res.render("login_required");
 });
