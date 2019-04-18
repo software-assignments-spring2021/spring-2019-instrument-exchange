@@ -124,9 +124,17 @@ module.exports = {
     StudioListing: StudioListing
 };
 
+// making connection to the database based on environment
+let dbconf;
+if (process.env.NODE_ENV === 'PRODUCTION') {
+    console.log("production environment");
+    dbconf = "mongodb://mongo:27017/docker-node";
+} else {
+    console.log("development environment");
+    dbconf = "mongodb://localhost/InstrumentExchange";
+}
 
-// making connection to the database
-let dbconf = "mongodb://localhost/InstrumentExchange";
 mongoose.connect(dbconf, {useNewUrlParser: true, useCreateIndex: true})
     .then ( ()=> { console.log("MongoDB Connected"); })
     .catch( err => console.log(err));
+

@@ -1,0 +1,21 @@
+version: '3'
+services:
+  node:
+    container_name: docker-node
+    image: mirahmed/node-app:v2
+#    build: .
+    deploy:
+      replicas: 1
+    restart: always
+    ports:
+      - '3000:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    restart: always
+    image: mongo
+    deploy:
+      replicas: 1
+    ports:
+      - '27017:27017'
