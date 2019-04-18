@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const db = require('../db');
 
 // Register
-router.get('/register', (req, res) => res.render('Register'));
+router.get('/register', (req, res) => res.render('register'));
 
 // Register Handle
 router.post('/register_user', (req, res) => {
