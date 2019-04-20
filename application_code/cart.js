@@ -1,6 +1,7 @@
 module.exports = function Cart(oldCart) {
   this.items = oldCart.items || {};
   this.totalPrice = oldCart.totalPrice || 0 ;
+  this.numItems = oldCart.numItems || 0;
 
   // Need to add daysRented functionality
   this.addRental = function(item, id) {
@@ -14,6 +15,7 @@ module.exports = function Cart(oldCart) {
       // Total price of items in the cart
       this.totalPrice += storedItem.price;
     }
+    this.numItems++;
   }
 
   this.addPurchase = function(item, id) {
@@ -23,10 +25,12 @@ module.exports = function Cart(oldCart) {
       storedItem.price = storedItem.item.rentalPrice;
       this.totalPrice += storedItem.price;
     }
+    this.numItems++;
   }
 
   this.deleteItem = function(id) {
     delete this.items[id];
+    this.numItems--;
   }
 
   this.generateArray = function() {
