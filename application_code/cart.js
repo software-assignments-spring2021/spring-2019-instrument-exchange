@@ -22,7 +22,7 @@ module.exports = function Cart(oldCart) {
     var storedItem = this.items[id];
     if (!storedItem) {
       storedItem = this.items[id] = {item: item, price: 0};
-      storedItem.price = storedItem.item.rentalPrice;
+      storedItem.price = storedItem.item.purchasePrice;
       this.totalPrice += storedItem.price;
     }
     this.numItems++;

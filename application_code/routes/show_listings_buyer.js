@@ -263,7 +263,7 @@ router.post('/add_studio/:id', function(req, res) {
             req.session.cart = cart;
             Studio.find()
                 .then(studios => {
-                    res.render("studio_listings_buyer", {studios: studios})
+                    res.render("buyer_portal", {message: studio.name + " was added to your shopping cart."})
                 })
                 .catch(err => console.log(err));
           })
@@ -326,7 +326,7 @@ router.post('/add_instrument_rental/:id', function(req, res) {
           req.session.cart = cart;
           Instrument.find()
               .then(instruments => {
-                  res.render("instrument_listings_buyer", {instruments: instruments})
+                  res.render("buyer_portal", {message: instrument.name + " was added to your shopping cart."})
               })
               .catch(err => console.log(err));
         })
@@ -354,11 +354,11 @@ router.post('/add_instrument_purchase/:id', function(req, res) {
 
         });
 
-        cart.addRental(instrument, instrument._id);
+        cart.addPurchase(instrument, instrument._id);
         req.session.cart = cart;
         Instrument.find()
             .then(instruments => {
-                res.render("instrument_listings_buyer", {instruments: instruments})
+                res.render("buyer_portal", {message: instrument.name + " was added to your shopping cart."})
             })
             .catch(err => console.log(err));
       })
