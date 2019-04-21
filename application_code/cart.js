@@ -13,7 +13,7 @@ module.exports = function Cart(oldCart) {
       storedItem.price = storedItem.item.rentalPrice;
       storedItem.cumulativeDaysPrice = storedItem.price * storedItem.daysRented;
       // Total price of items in the cart
-      this.totalPrice += storedItem.price;
+      this.totalPrice += storedItem.cumulativeDaysPrice;
     }
     this.numItems++;
   }
@@ -29,8 +29,10 @@ module.exports = function Cart(oldCart) {
   }
 
   this.deleteItem = function(id) {
+    var storedPrice = this.items[id].price;
     delete this.items[id];
     this.numItems--;
+    this.totalPrice -= storedPrice;
   }
 
   this.generateArray = function() {

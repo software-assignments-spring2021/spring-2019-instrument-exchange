@@ -10,7 +10,9 @@ router.get('/shopping_cart', function (req, res, next) {
 });
 
 router.post('/checkout', function (req, res) {
-
+    if (req.user) {
+      res.render("checkout", {cart: req.session.cart});
+    } else res.render("login_required");
 });
 
 module.exports = router;
