@@ -47,4 +47,8 @@
 
 <h2>Total: ${{cart.totalPrice}}</h2>
 
-<button type="button" class="btn btn-primary">Place Your Order</button>
+<div class="form">
+  <form method="post" action="/place_order" enctype="application/x-www-form-urlencoded">
+    <button type="submit" class="btn btn-primary">Place Your Order</button>
+  </form>
+</div>
