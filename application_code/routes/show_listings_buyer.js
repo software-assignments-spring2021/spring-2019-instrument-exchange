@@ -11,6 +11,12 @@ const api = require('../api_keys').zipAPI;
 const request = require('request');
 
 
+function iterator(collection) {
+    return collection.map(ele => {
+        return ele.zip_code;
+    });
+}
+
 // authenticated route
 router.get('/studio_listings_buyer', function (req, res) {
     if (req.user) {
@@ -90,9 +96,8 @@ router.get('/studios/applyfilter', function(req, res) {
         console.log(url);
         request(url, {json: true}, (err, response, body) => {
             if (err) console.log(err);
-            zipCodes = body.zip_codes.map(function(ele) {
-                return ele.zip_code;
-            });
+            // iterator design pattern.
+            zipCodes = iterator(body.zip_codes);
 
             // apply the filters
             if (price === "default") {
@@ -157,9 +162,10 @@ router.get('/instruments/applyfilter', function(req, res) {
         console.log(url);
         request(url, {json: true}, (err, response, body) => {
             if (err) console.log(err);
-            zipCodes = body.zip_codes.map(function(ele) {
-                return ele.zip_code;
-            });
+
+            // iterator design pattern
+            zipCodes = iterator(body.zip_codes);
+
             if (price === "default") {
                 InstrumentListing.find({sellerId: {$ne: req.user._id}})
                 // getting all the studio ids from the studio listings schema
