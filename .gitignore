@@ -6,3 +6,4 @@ application_code/public/uploads
 *.DS_Store
 .DS_Store
 application_code/.nyc_output
+application_code/.env
