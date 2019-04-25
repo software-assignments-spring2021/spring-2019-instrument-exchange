@@ -134,7 +134,7 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
     dbconf = `mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`;
 }
 else {
-    console.log("OOOOOPS!!!");
+    dbconf = `mongodb://localhost/InstrumentExchange`;
 }
 
 mongoose.connect(dbconf, {useNewUrlParser: true, useCreateIndex: true})
