@@ -128,7 +128,7 @@ module.exports = {
 let dbconf;
 if (process.env.NODE_ENV === 'PRODUCTION') {
     console.log("Starting App on Production");
-    dbconf = `mongodb://${process.env.DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`;
+    dbconf = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 } else if (process.env.NODE_ENV === 'DEV') {
     console.log("Starting App on Local Machine");
     dbconf = `mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`;
