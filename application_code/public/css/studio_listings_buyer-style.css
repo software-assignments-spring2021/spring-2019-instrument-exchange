@@ -41,6 +41,29 @@
     padding-left: 2em;
 }
 
+#reset-button{
+    top:100%;
+    text-align: center;
+    background-color: #222;
+    border:none;
+    color: white;
+    font-size: 16px;
+    padding: 15px 32px;
+    font-family: "Roboto", sans-serif;
+}
+
+#reset-button a{
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#reset-button:hover{
+    background-color: #111111;
+}
+
 input{
     top:100%;
     text-align: center;
