@@ -1,6 +1,7 @@
 var stripe = Stripe('pk_test_eL7C4wl2pmBlYBp4mfwslAFu00kbiZA9eq');
-
 var $form = $('#checkout-form');
+
+console.log("PEEEEENIS");
 
 $form.submit(function(event) {
   $form.find('button').prop('disabled', true);
@@ -16,6 +17,10 @@ $form.submit(function(event) {
 
 function stripeResponseHandler(status, response) {
   if (response.error) {
+    // Show errors on form
+    $('#charge-error').text(response.error.message);
+    $('#charge-error').removeClass('hidden');
+    $form.find('button').prop('disabled', false);
 
   } else {
     var token = response.id;
