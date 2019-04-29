@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
 const flash = require('flash');
 const session = require('express-session');
+const stripe = require('stripe')('pk_test_eL7C4wl2pmBlYBp4mfwslAFu00kbiZA9eq');
 const path = require('path');
 const hbs = require('hbs');
 const publicPath = path.resolve(__dirname, 'public');

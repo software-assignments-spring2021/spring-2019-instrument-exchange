@@ -32,10 +32,12 @@
 
 </div>
 
+<h2>Total: ${{cart.totalPrice}}</h2>
+
 <h2>Shipping Address</h2>
 <input type="radio"> {{ user.address }}<br>
 
-<form action="/do_something" method="post" id="checkout-form">
+<form action="/place_order" method="post" enctype="application/x-www-form-urlencoded" id="checkout-form">
   <div class="form-group">
     <label for="name">Credit Card Number</label>
     <input id="creditCardNum" class="form-control"/>
@@ -56,15 +58,10 @@
     <label for="name">Cardholder's Name:</label>
     <input id="cardName" class="form-control"/>
   </div>
+
+  <button type="submit" class="btn btn-primary">Place Your Order</button>
 </form>
 
-<h2>Total: ${{cart.totalPrice}}</h2>
 
-<div class="form">
-  <form method="post" action="/place_order" enctype="application/x-www-form-urlencoded">
-    <button type="submit" class="btn btn-primary">Place Your Order</button>
-  </form>
-</div>
-
-<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script src="../checkout.js"></script>

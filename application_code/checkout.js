@@ -1,11 +1,9 @@
-var stripe = Stripe('pk_test_eL7C4wl2pmBlYBp4mfwslAFu00kbiZA9eq');
+Stripe.setPublishableKey('sk_test_K8TpMHDjlapM1Vp5kjoaxppN00ccillGae');
 var $form = $('#checkout-form');
-
-
 
 $form.submit(function(event) {
   $form.find('button').prop('disabled', true);
-  stripe.createToken({
+  Stripe.card.createToken({
     number: $('#creditCardNum').val(),
     cvc: $('#cvvCode').val(),
     exp_month: $('#expirationMonth').val(),
@@ -16,6 +14,7 @@ $form.submit(function(event) {
 });
 
 function stripeResponseHandler(status, response) {
+  console.log("HELLO");
   if (response.error) {
     // Show errors on form
     $('#charge-error').text(response.error.message);
