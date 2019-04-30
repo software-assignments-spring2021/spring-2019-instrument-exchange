@@ -4,6 +4,7 @@ const db = require('../db');
 const Cart = require('../cart');
 const Studio = db.Studio;
 const Instrument = db.Instrument;
+const StudioTransaction = db.StudioTransaction;
 
 router.get('/shopping_cart', function (req, res, next) {
     res.render("shopping_cart", {cart: req.session.cart});
@@ -28,23 +29,27 @@ router.post('/place_order', function (req, res) {
    stripe.charges.create({
        amount: cart.totalPrice * 100,
        currency: "usd",
-       source: req.body.stripeToken, // obtained with Stripe.js
+       source: "tok_mastercard", // obtained with Stripe.js
        description: "Test Charge"
    }, function(err, charge) {
        if (err) {
            req.flash('error', err.message);
-           console.log("ERORR DOEEEEE");
-           console.log(err);
+           console.log("An error occurred.");
+           console.log(err + "\n");
            return res.redirect('/checkout');
        }
-       var order = new Order({
-           user: req.user,
-           cart: cart,
-           address: req.body.address,
-           name: req.body.name,
-           paymentId: charge.id
+
+       var transaction = new StudioTransaction({
+         transactionType: "Rental",
+         studioId: "",
+         buyerId: "",
+         sellerId: "",
+         rentalDateStart: "",
+         rentalDateEnd: "",
+         price: 1
        });
-       order.save(function(err, result) {
+
+       transaction.save(function(err, result) {
            req.flash('success', 'Successfully bought product!');
            req.session.cart = null;
            res.redirect('/');
