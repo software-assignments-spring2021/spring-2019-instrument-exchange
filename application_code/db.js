@@ -102,6 +102,14 @@ const StudioTransactionSchema = new Schema({
     price: {type: Number, required: true}
 });
 
+const OrderSchema = new Schema({
+    userId: {type: Schema.Types.ObjectId, ref: "User"},
+    cart: {type: Object, required: true},
+    address: {type: String, required: true},
+    name: {type: String, required: true},
+    paymentId: {type: String, required: true},
+});
+
 
 // registering the models
 const Range = mongoose.model('Range', RangeSchema);
@@ -112,6 +120,7 @@ const InstrumentTransaction = mongoose.model('InstrumentTransaction', Instrument
 const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionSchema);
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
+const Order = mongoose.model('Order', OrderSchema);
 
 module.exports = {
     Range: Range,
@@ -121,7 +130,8 @@ module.exports = {
     InstrumentTransaction: InstrumentTransaction,
     StudioTransaction: StudioTransaction,
     InstrumentListing: InstrumentListing,
-    StudioListing: StudioListing
+    StudioListing: StudioListing,
+    Order: Order
 };
 
 // making connection to the database based on environment
@@ -137,4 +147,3 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 mongoose.connect(dbconf, {useNewUrlParser: true, useCreateIndex: true})
     .then ( ()=> { console.log("MongoDB Connected"); })
     .catch( err => console.log(err));
-

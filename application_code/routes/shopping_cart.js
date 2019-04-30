@@ -4,7 +4,7 @@ const db = require('../db');
 const Cart = require('../cart');
 const Studio = db.Studio;
 const Instrument = db.Instrument;
-const StudioTransaction = db.StudioTransaction;
+const Order = db.Order;
 
 router.get('/shopping_cart', function (req, res, next) {
     res.render("shopping_cart", {cart: req.session.cart});
@@ -39,17 +39,16 @@ router.post('/place_order', function (req, res) {
            return res.redirect('/checkout');
        }
 
-       var transaction = new StudioTransaction({
-         transactionType: "Rental",
-         studioId: "",
-         buyerId: "",
-         sellerId: "",
-         rentalDateStart: "",
-         rentalDateEnd: "",
-         price: 1
+       var order = new Order({
+            user: req.user,
+            cart: cart,
+            address: req.user.address,
+            firstName: req.user.firstName,
+            lastName: req.user.lastName,
+            paymentId: charge.id
        });
 
-       transaction.save(function(err, result) {
+       order.save(function(err, result) {
            req.flash('success', 'Successfully bought product!');
            req.session.cart = null;
            res.redirect('/');
