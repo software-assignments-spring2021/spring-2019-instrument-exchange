@@ -132,8 +132,13 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
 } else if (process.env.NODE_ENV === 'DEV') {
     console.log("Starting App on Local Machine");
     dbconf = `mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`;
-}
-else {
+} else if (process.env.NODE_ENV === 'K8S') {
+    dbconf = `mongodb+srv://mir:${process.env.DB_PASSWORD}@mogodb-e1iak.gcp.mongodb.net/InstrumentExchange?retryWrites=true`;
+    console.log("starting app on Kubernetes cluster with MongoDB Atlas");
+} else if (process.env.NODE_ENV === 'ATLAS') {
+    console.log("starting app with MongoDB ATLAS");
+    dbconf = `mongodb+srv://mir:${process.env.DB_PASSWORD}@mogodb-e1iak.gcp.mongodb.net/InstrumentExchange?retryWrites=true`;
+} else {
     dbconf = `mongodb://localhost/InstrumentExchange`;
 }
 
