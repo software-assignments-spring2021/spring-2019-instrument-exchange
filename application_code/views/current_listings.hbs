@@ -33,7 +33,6 @@
         {{#each instruments}}
             <div class="card">
                 <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.coverPicture }}" alt="Card image cap">
-                
                 <div class="card-body">
                     <h3 class="card-text">{{ this.name }}</h3>
                     <h5 class="card-text">{{ this.address }}</h5>
@@ -41,8 +40,7 @@
                 </div>
                 <button class="show-detail"><a href="/instrument_detail/seller/{{ this._id }}">Show Details</a></button>
                 </div>
-            
-</div>
+    </div>
         {{/each}}
 {{else}}
     <p class="lead" id="empty-instruments">You currently don't have any listings for Instruments</p>
@@ -53,7 +51,7 @@
 <script>
     window.onload = function() {
     document.getElementById('instrument').style.display = 'none';
-};
+}
 
 function openTab(tabName) {
   var i;

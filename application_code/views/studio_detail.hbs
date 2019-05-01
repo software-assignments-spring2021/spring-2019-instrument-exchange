@@ -11,6 +11,10 @@
     <p> <strong>Location</strong>: {{ studio.address }}</p>
     <p> <strong>Rental Price</strong>: ${{ studio.rentalPrice }} per Day</p>
     <p> <strong>Studio Description</strong>: {{ studio.description }} </p>
+  </div>
+</div>
+
+
     <div class="form">
     <form method="post" action="/add_studio/{{studio.id}}" enctype="application/x-www-form-urlencoded">
       <div class="form-group">
@@ -23,5 +27,3 @@
         <p>{{error}}</p>
     {{/if}}
     </form>
-  </div>
-</div>
