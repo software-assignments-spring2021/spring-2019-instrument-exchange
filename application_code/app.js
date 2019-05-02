@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
 const flash = require('flash');
 const session = require('express-session');
+const stripe = require('stripe')('pk_test_eL7C4wl2pmBlYBp4mfwslAFu00kbiZA9eq');
 const path = require('path');
 const hbs = require('hbs');
 const publicPath = path.resolve(__dirname, 'public');
@@ -50,6 +51,7 @@ app.use(function(req, res, next) {
 
 // view engine setup
 app.set('view engine', 'hbs');
+
 // adding custom helpers for hbs
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
@@ -58,6 +60,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 hbs.registerHelper("ifeq", function(value1, value2, options){
   return (value1 == value2) ? options.fn(this) : options.inverse(this);
+});
+
+hbs.registerHelper('ifGreater', function(arg1, arg2, options) {
+  return (arg1 > arg2) ? options.fn(this) : options.inverse(this);
 });
 
 // Express Validator

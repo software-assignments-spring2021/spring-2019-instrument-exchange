@@ -1,8 +1,14 @@
 <link rel="stylesheet" type="text/css" href="/css/shopping_cart-style.css">
 <p class="lead">My Shopping Cart</p>
 
-<!-- Button should lead to checkout page -->
-<a class="btn btn-primary" id="checkout" href="/checkout">Check out</a>
+
+{{#ifGreater cart.numItems 0}}
+  <!-- Button should lead to checkout page -->
+  <div class="form">
+    <form method="post" action="/checkout" enctype="application/x-www-form-urlencoded">
+      <button type="submit" class="">Proceed to Checkout</button>
+    </form>
+  </div>
 {{#if cart.items}}
   <div class="card-columns">
       {{#each cart.items}}
@@ -38,6 +44,5 @@
   </div>
 {{else}}
   <h1>cart is empty</h1>
+{{/ifGreater}}
 {{/if}}
-
-

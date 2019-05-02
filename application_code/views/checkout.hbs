@@ -1,1 +1,62 @@
-<h1>CHECKOUT</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+
+<h1>Checkout</h1>
+
+{{#each cart.items}}
+  <div class="card">
+    {{#ifeq this.item.classType "Studio"}}
+      <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
+    {{/ifeq}}
+    {{#ifeq this.item.classType "Instrument"}}
+      <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.item.coverPicture }}" alt="Card image cap">
+    {{/ifeq}}
+    <div class="card-body">
+        <h3 class="card-text">{{ this.item.name }}</h3>
+        <h5 class="card-text">{{ this.item.address }}</h5>
+
+        {{#ifeq this.item.isRental true}}
+          <h5 class="card-text">Type: Rental</h5>
+          <h5 class="card-text">Rental Duration: {{ this.item.startDate }} to {{ this.item.endDate }}</h5>
+          <p class="card-text">Cost: ${{ this.price }} * {{ this.daysRented }} days = ${{ this.cumulativeDaysPrice }}</p>
+        {{else}}
+          <h5 class="card-text">Type: Purchase</h5>
+          <p class="card-text">Cost: ${{ this.price }}</p>
+        {{/ifeq}}
+    </div>
+{{/each}}
+
+<h2>Total: ${{cart.totalPrice}}</h2>
+
+<h2>Shipping Address</h2>
+<input type="radio"> {{ user.address }}<br>
+
+<form action="/place_order" method="post" id="checkout-form">
+  <div class="form-group">
+    <label for="name">Credit Card Number</label>
+    <input id="creditCardNum" class="form-control" required/>
+  </div>
+  <div class="form-group">
+    <label for="name">Expiration Month:</label>
+    <input id="expirationMonth" class="form-control" required placeholder="MM"/>
+  </div>
+  <div class="form-group">
+    <label for="name">Expiration Year:</label>
+    <input id="expirationYear" class="form-control" required placeholder="YYYY"/>
+  </div>
+  <div class="form-group">
+    <label for="name">CVV Code:</label>
+    <input id="cvvCode" class="form-control" required/>
+  </div>
+  <div class="form-group">
+    <label for="name">Cardholder's Name:</label>
+    <input id="cardName" class="form-control" required/>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Place Your Order</button>
+</form>
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="javascript/checkout.js"></script>
