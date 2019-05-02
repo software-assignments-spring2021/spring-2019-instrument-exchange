@@ -111,6 +111,12 @@ const OrderSchema = new Schema({
     paymentId: {type: String, required: true},
 });
 
+const NotificationSchema = new Schema({
+    buyerId: {type: Schema.Types.ObjectId, ref: "User"},
+    sellerId: {type: Schema.Types.ObjectId, ref: "User"},
+    cart: {type: Object, required: true},
+});
+
 
 // registering the models
 const Range = mongoose.model('Range', RangeSchema);
@@ -122,6 +128,7 @@ const StudioTransaction = mongoose.model('StudioTransaction', StudioTransactionS
 const InstrumentListing = mongoose.model('InstrumentListing', InstrumentListingSchema);
 const StudioListing = mongoose.model('StudioListing', StudioListingSchema);
 const Order = mongoose.model('Order', OrderSchema);
+const Notification = mongoose.model('Notification', NotificationSchema);
 
 module.exports = {
     Range: Range,
@@ -132,7 +139,8 @@ module.exports = {
     StudioTransaction: StudioTransaction,
     InstrumentListing: InstrumentListing,
     StudioListing: StudioListing,
-    Order: Order
+    Order: Order,
+    Notification: Notification
 };
 
 // making connection to the database based on environment
