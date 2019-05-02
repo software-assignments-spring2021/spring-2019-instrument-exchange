@@ -1,4 +1,6 @@
 // app.js
+
+config = require('dotenv').config(); // configures the environment vars.
 const express = require('express');
 const app = express();
 require('./db');
@@ -12,6 +14,7 @@ const path = require('path');
 const hbs = require('hbs');
 const publicPath = path.resolve(__dirname, 'public');
 const passport = require('passport');
+
 
 // static files setup
 app.use(express.static(publicPath));

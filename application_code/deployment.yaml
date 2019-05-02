@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ie-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ie-deployment
+  template:
+    metadata:
+      labels:
+        app: ie-deployment
+    spec:
+      containers:
+      - name: ie-app
+        image: gcr.io/k8s-tutorial-239121/node-app:v1
+        ports:
+        - containerPort: 3000 

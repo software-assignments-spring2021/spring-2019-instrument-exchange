@@ -1,4 +1,6 @@
-<h1>My Shopping Cart</h1>
+<link rel="stylesheet" type="text/css" href="/css/shopping_cart-style.css">
+<p class="lead">My Shopping Cart</p>
+
 
 {{#ifGreater cart.numItems 0}}
   <!-- Button should lead to checkout page -->
@@ -7,6 +9,7 @@
       <button type="submit" class="">Proceed to Checkout</button>
     </form>
   </div>
+{{#if cart.items}}
   <div class="card-columns">
       {{#each cart.items}}
       <div class="card">
@@ -32,10 +35,8 @@
 
 
         <div class="card-body">
-          <div class="form">
             <form method="post" action="/delete_item/{{this.item._id}}" enctype="application/x-www-form-urlencoded">
-              <button type="submit" class="btn btn-primary">Delete</button>
-            </form>
+              <button id="delete-button" type="submit" class="btn btn-primary">Delete</button>
           </div>
         </div>
       </div>
@@ -44,3 +45,4 @@
 {{else}}
   <h1>cart is empty</h1>
 {{/ifGreater}}
+{{/if}}
