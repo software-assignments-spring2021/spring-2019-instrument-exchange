@@ -69,7 +69,8 @@ router.post('/list_studio', function (req, res) {
                     pictures: pictures,
                     coverPicture: pictures[0],
                     description: req.body.description,
-                    rentalPrice: req.body.rental_price
+                    rentalPrice: req.body.rental_price,
+                    sellerID: req.user.id
                 });
 
                 newStudio.save()
