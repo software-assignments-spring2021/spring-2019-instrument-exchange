@@ -76,7 +76,8 @@ router.post('/list_instrument', function (req, res) {
                     coverPicture: pictures[0],
                     description: req.body.description,
                     rentalPrice: req.body.rental_price,
-                    purchasePrice: req.body.purchase_price
+                    purchasePrice: req.body.purchase_price,
+                    sellerID: req.user.id
                 });
 
 

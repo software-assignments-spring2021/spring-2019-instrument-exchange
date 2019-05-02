@@ -49,7 +49,7 @@ router.post('/place_order', function (req, res) {
        });
 
        order.save(function(err, result) {
-         console.log(order);
+         console.log(order.cart.items);
            req.flash('success', 'Successfully bought product!');
            req.session.cart = null;
            res.redirect('/');

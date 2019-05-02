@@ -46,7 +46,8 @@ const InstrumentSchema = new Schema({
     startDate: {type: String, default: null},
     endDate: {type: String, default: null},
     classType: {type: String, default: "Instrument"},
-    booked: [RangeSchema] // array of date ranges
+    booked: [RangeSchema], // array of date ranges
+    sellerID: {type: Schema.Types.ObjectId, required: true}
 });
 
 const StudioSchema = new Schema({
@@ -62,7 +63,8 @@ const StudioSchema = new Schema({
     startDate: {type: String, default: null},
     endDate: {type: String, default: null},
     classType: {type: String, default: "Studio"},
-    booked: [RangeSchema] // array of date ranges
+    booked: [RangeSchema], // array of date ranges
+    sellerID: {type: Schema.Types.ObjectId, required: true}
 });
 
 const InstrumentListingSchema = new Schema({
