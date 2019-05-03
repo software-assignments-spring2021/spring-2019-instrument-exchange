@@ -70,7 +70,7 @@ router.post('/list_studio', function (req, res) {
                     coverPicture: pictures[0],
                     description: req.body.description,
                     rentalPrice: req.body.rental_price,
-                    sellerID: req.user.id
+                    sellerId: req.user.id
                 });
 
                 newStudio.save()

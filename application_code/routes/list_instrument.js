@@ -77,7 +77,7 @@ router.post('/list_instrument', function (req, res) {
                     description: req.body.description,
                     rentalPrice: req.body.rental_price,
                     purchasePrice: req.body.purchase_price,
-                    sellerID: req.user.id
+                    sellerId: req.user.id
                 });
 
 

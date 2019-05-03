@@ -49,38 +49,22 @@ router.post('/place_order', function (req, res) {
             paymentId: charge.id
        });
 
-  //      RESULT: { _id: 5ccb29cdfe467e130a10a674,
-  // cart:
-  //  Cart {
-  //    items: { '5ccb23b9d0c3c41191f9d1e1': [Object] },
-  //    totalPrice: 800,
-  //    numItems: 1,
-  //    addRental: [Function],
-  //    addPurchase: [Function],
-  //    deleteItem: [Function],
-  //    generateArray: [Function] },
-  // address: 'Times Square, Manhattan, New York, NY, USA',
-  // firstName: 'T',
-  // lastName: 'T',
-  // paymentId: 'ch_1EVimHGmFJY0AUAPzPJha2PY',
-  // __v: 0 }
-
        order.save(function(err, result) {
          if (err) {
 
          } else {
-            console.log("RESULT: " + result);
             const cartEntries = Object.entries(result.cart.items);
+
             for (var entry of cartEntries) {
-              var itemId = entry[0];
-              var item = entry[1];
+              var cartItem = entry[1].item;
 
               var notification = new Notification({
                 buyerId: req.user.id,
-                sellerId: item.sellerID,
-                itemId: itemId
+                sellerId: cartItem.sellerId,
+                itemId: cartItem.id
               });
               console.log(notification);
+
               notification.save(function(err, result) {
                 console.log("successfully saved!");
               });
