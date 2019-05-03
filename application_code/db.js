@@ -116,7 +116,7 @@ const OrderSchema = new Schema({
 const NotificationSchema = new Schema({
     buyerId: {type: Schema.Types.ObjectId, ref: "User"},
     sellerId: {type: Schema.Types.ObjectId, ref: "User"},
-    cart: {type: Object, required: true},
+    itemId: {type: Schema.Types.ObjectId}
 });
 
 
