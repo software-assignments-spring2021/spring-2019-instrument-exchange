@@ -103,6 +103,7 @@ const currentListings = require('./routes/current_listings');
 const showListingsBuyer = require('./routes/show_listings_buyer');
 const shoppingCart = require('./routes/shopping_cart');
 const checkout = require('./routes/checkout');
+const notifications = require('./routes/notification');
 
 // route middleware goes here.
 app.use('/', register);
@@ -120,6 +121,7 @@ app.use('/', currentListings);
 app.use('/', showListingsBuyer);
 app.use('/', shoppingCart);
 app.use('/', checkout);
+app.use('/', notifications);
 
 // firing up the node server
 const appConnection = function () {
