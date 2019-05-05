@@ -1,0 +1,15 @@
+{{#if message}}
+    <p>You dont have any notifications</p>
+{{else}}
+    {{#if studioBuyers}}
+        {{#each studioBuyers}}
+            <p>{{this.buyerName}} rented your studio <strong>{{this.itemName}}</strong>.</p>
+        {{/each}}
+    {{/if}}
+
+    {{#if instrumentBuyers}}
+        {{#each instrumentBuyers}}
+            <p>{{this.buyerName}} rented your instrument <strong>{{this.itemName}}</strong>.</p>
+        {{/each}}
+    {{/if}}
+{{/if}}
