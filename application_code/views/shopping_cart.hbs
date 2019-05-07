@@ -1,12 +1,14 @@
 <link rel="stylesheet" type="text/css" href="/css/shopping_cart-style.css">
-<p class="lead">My Shopping Cart</p>
+<span>My Shopping Cart</span>
 
 {{#ifGreater cart.numItems 0}}
   <!-- Button should lead to checkout page -->
-  <div class="form">
+  <div id="moveRight">
+  <div id = "checkout">
     <form method="post" action="/checkout" enctype="application/x-www-form-urlencoded">
       <button type="submit" class="">Proceed to Checkout</button>
     </form>
+  </div>
   </div>
 {{#if cart.items}}
   <div class="card-columns">

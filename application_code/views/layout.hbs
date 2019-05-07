@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Instrument Exchange</title>
+    <title >Instrument Exchange</title>
 
     <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
     <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
@@ -15,7 +15,7 @@
 
 <nav>
     <ul>
-        <li><a class="navbar-brand" href="/">Instrument Exchange</a></li>
+        <li><a id="title" class="navbar-brand" href="/">Instrument Exchange</a></li>
                 {{#if isAuthenticated}}
                 <div class="dropdown-seller">
                     <li><a class="nav-item nav-link" href="/seller_portal">Seller Portal</a></li>
@@ -34,8 +34,8 @@
                             <a href="/shopping_cart">Shopping Cart</a>
                         </div>
                     </div>
-                    <li><a class="nav-item nav-link" href="/profile">Profile</a></li>
-                    <li><a class="nav-item nav-link" href="/shopping_cart">Shopping Cart</a></li>
+                    <li><a id="profile" class="nav-item nav-link" href="/profile">Profile</a></li>
+                    <li><a id="shoppingCart" class="nav-item nav-link" href="/shopping_cart">Shopping Cart</a></li>
                     <li id="logoutbtn"><a class="nav-item nav-link" href="/logout">Logout</a></li>
 
                 {{else}}

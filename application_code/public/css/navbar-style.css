@@ -89,4 +89,20 @@ nav ul li a:hover{
     float:right;
 }
 
+@media only screen and (max-width: 750px) {
+    #title{
+        display:none;
+    }
+  }
 
+  @media only screen and (max-width: 530px) {
+    #profile{
+        display:none;
+    }
+}
+
+    @media only screen and (max-width: 470px) {
+        #shoppingCart{
+            display:none;
+        }
+    }
