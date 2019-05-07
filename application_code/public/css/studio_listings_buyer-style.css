@@ -153,6 +153,8 @@ img{
     height: 200px;
 }
 
+
+
 @media only screen and (max-width: 1350px) {
     #studios-found{
         display:none;
