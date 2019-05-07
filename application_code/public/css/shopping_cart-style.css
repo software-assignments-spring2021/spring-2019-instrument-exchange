@@ -118,6 +118,7 @@ img{
     width: 300px;
     outline:none;
     border:0;
+    
 
 }
 #delete-button a{
@@ -128,22 +129,30 @@ img{
     background-color: #111111;
 }
 
-#checkout{
-    background-color: #333;
-    box-shadow: 0px 10px 14px -7px #3b3a3b;
-    color: white;
-    padding: 13px 32px;
-    text-align: center;
-    width: 280px;
-    float: right;
-    top: 100%;
-    text-decoration: none;
-}
 
-#checkout:hover{
+
+#checkout button{
+	box-shadow: 0px 10px 14px -7px #3b3a3b;
+	background-color:#313233;
+	cursor:pointer;
+    color:#ffffff;
+    display: inline-block;
+	font-size:20px;
+	font-weight:bold;
+    padding:13px 32px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #000000;
+    background-color:#292729;
+    border-color: #3333
+    
+}
+#moveRight{
+    text-align: right;
+}
+#checkout button:hover{
     background-color: #111;
+    border-color: #111
 }
-
 .lead{
     background-color: #444444;
     box-shadow: 0px 10px 14px -7px #3b3a3b;
@@ -151,5 +160,18 @@ img{
     display: inline-block;
     padding: 13px 32px;
     text-align: center;
+    width: 280px;
+}
+
+
+span{
+    background-color: #444444;
+    box-shadow: 0px 10px 14px -7px #3b3a3b;
+    color: white;
+    display:block;
+    top:100%;
+    padding: 15px 32px;
+    text-align: center;
+    float: left;
     width: 280px;
 }

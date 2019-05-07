@@ -1,17 +1,18 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
 
 <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
 
+<div class = "form">
 <h1>Checkout</h1>
-
+<br>
 {{#each cart.items}}
   <div class="card">
-    {{#ifeq this.item.classType "Studio"}}
+    {{!-- {{#ifeq this.item.classType "Studio"}}
       <img class="card-img-top cover-picture" src="/uploads/studios/{{ this.item.coverPicture }}" alt="Card image cap">
     {{/ifeq}}
     {{#ifeq this.item.classType "Instrument"}}
       <img class="card-img-top cover-picture" src="/uploads/instruments/{{ this.item.coverPicture }}" alt="Card image cap">
-    {{/ifeq}}
+    {{/ifeq}} --}}
     <div class="card-body">
         <h3 class="card-text">{{ this.item.name }}</h3>
         <h5 class="card-text">{{ this.item.address }}</h5>
@@ -25,13 +26,16 @@
           <p class="card-text">Cost: ${{ this.price }}</p>
         {{/ifeq}}
     </div>
+    <br>
 {{/each}}
 
 <h2>Total: ${{cart.totalPrice}}</h2>
 
 <h2>Shipping Address</h2>
-<input type="radio"> {{ user.address }}<br>
-
+<br>
+<span type="radio"> {{ user.address }} </span>
+<br>
+<br>
 <form action="/place_order" method="post" id="checkout-form">
   <div class="form-group">
     <label for="name">Credit Card Number</label>
@@ -56,7 +60,7 @@
 
   <button type="submit" class="btn btn-primary">Place Your Order</button>
 </form>
-
+</div>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="javascript/checkout.js"></script>

@@ -1,6 +1,5 @@
 
 
-
 .card{
     background-color: white;
     border-radius: 15px 15px 0px 0px;
@@ -153,3 +152,23 @@ img{
     width: 300px;
     height: 200px;
 }
+
+@media only screen and (max-width: 1350px) {
+    #studios-found{
+        display:none;
+    }
+  }
+
+  @media only screen and (max-width: 1010px) {
+    #reset-button{
+        display:none;
+    }
+  }
+
+  @media only screen and (max-width: 855px) {
+    #filter{
+        display:none;
+    }
+  }
+
+ 
