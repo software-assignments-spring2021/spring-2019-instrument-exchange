@@ -163,6 +163,7 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
     console.log("starting app with MongoDB ATLAS");
     dbconf = `mongodb+srv://mir:${process.env.DB_PASSWORD}@mogodb-e1iak.gcp.mongodb.net/InstrumentExchange?retryWrites=true`;
 } else {
+    console.log("Starting App on Local Machine");
     dbconf = `mongodb://localhost/InstrumentExchange`;
 }
 
