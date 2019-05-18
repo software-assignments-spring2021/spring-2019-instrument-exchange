@@ -14,19 +14,12 @@ MongoDB will be used as a database platform to maintain users' data and transact
 The authentication software used to ensure security will be Passport.js. A file system will be used to maintain all photos listed by sellers.  
 Monetary transactions through our platform will be securely done through implementing PayPal.
 
-**Update:** Our application has been deployed in Google's Kubernetes Engine (GKE). We have also performed  load testing by sending **100 Billion** request per second on average and the kubernetes cluster was able to successfully create 8 replicas of the application. Please refer to `load-testing.yaml` for more details.
-
-<h2>Getting Started</h2>   
-This project has yet to reach the stage of a minimum viable product. However, more detailed instructions to come on how to install the project on your local machine. To contribute to our project, kindly clone or fork a git repository on to begin.
-
-<h3>Prerequisites</h3>   
-Before working on this project, ensure that there is a **MongoDB instance** running on the local machine.     
-
+**Update:** Our application has been deployed in Google's Kubernetes Engine (GKE). We have also performed  load testing by sending **100 Billion** request per second on average and the kubernetes cluster was able to successfully create 8 replicas of the application. Please refer to `load_test.yaml` for more details.
 
 
 <h3>Technologies</h3>
 
-![alt technologies][technologies.png]
+![alt technologies](technologies.png)
 
 Official links can be found here:  
 - [Node.js](https://nodejs.org/en/download/) - Backend framework used   
@@ -35,6 +28,15 @@ Official links can be found here:
 - [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) - Database platform for user data     
 - [Mocha](https://mochajs.org/#installation) - Unit testing framework  
 - [Kubernetes](https://kubernetes.io/) - Kubernetes for deployment.
+
+<h2>Getting Started</h2>   
+
+This project has yet to reach the stage of a minimum viable product. However, more detailed instructions to come on how to install the project on your local machine. To contribute to our project, kindly clone or fork a git repository on to begin.
+
+<h3>Prerequisites</h3> 
+
+Before working on this project, ensure that there is a **MongoDB instance** running on the local machine.     
+
 
 <h3>Installing</h3> 
 
