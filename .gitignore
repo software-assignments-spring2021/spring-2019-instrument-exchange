@@ -1,3 +1,4 @@
+node_modules/
 application_code/.idea/
 application_code/node_modules/
 application_code/package-lock.json
