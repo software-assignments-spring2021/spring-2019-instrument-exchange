@@ -12,7 +12,9 @@ The project will utilize JavaScript/React as a frontend framework to allow users
 In addition, the unit testing framework Mocha will be used to complement our use of JavaScript.   
 MongoDB will be used as a database platform to maintain users' data and transaction history to record all products listed and purchased as well as user profile information such as login and password.     
 The authentication software used to ensure security will be Passport.js. A file system will be used to maintain all photos listed by sellers.  
-Monetary transactions through our platform will be securely done through implementing PayPal.   
+Monetary transactions through our platform will be securely done through implementing PayPal.
+
+**Update:** Our application has been deployed in Google's Kubernetes Engine (GKE). We have also performed  load testing by sending **100 Billion** request per second on average and the kubernetes cluster was able to successfully create 8 replicas of the application. Please refer to `load-testing.yaml` for more details.
 
 <h2>Getting Started</h2>   
 This project has yet to reach the stage of a minimum viable product. However, more detailed instructions to come on how to install the project on your local machine. To contribute to our project, kindly clone or fork a git repository on to begin.
@@ -20,21 +22,32 @@ This project has yet to reach the stage of a minimum viable product. However, mo
 <h3>Prerequisites</h3>   
 Before working on this project, ensure that there is a **MongoDB instance** running on the local machine.     
 
+
+
+<h3>Technologies</h3>
+
+![alt technologies][technologies.png]
+
 Official links can be found here:  
 - [Node.js](https://nodejs.org/en/download/) - Backend framework used   
 - [Passport.js](http://www.passportjs.org/) - Used to ensure login authentication    
 - [React.js](https://facebook.github.io/react-native/docs/getting-started.html) - Web interface framework    
 - [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) - Database platform for user data     
-- [Mocha](https://mochajs.org/#installation) - Unit testing framework    
+- [Mocha](https://mochajs.org/#installation) - Unit testing framework  
+- [Kubernetes](https://kubernetes.io/) - Kubernetes for deployment.
 
-<h3>Installing</h3>  
-Navigate to the `application_code` directory run the command `npm install` to install all the packages required for this project to run.
+<h3>Installing</h3> 
 
-<h3>Running the tests</h3>     
-Run the command `npm test` to run all the unit tests written. To generate `code coverage` report run the command `npm run test-with-coverage`
+Navigate to the **application_code** directory run the command **npm install** to install all the packages required for this project to run.
+
 
 <h3>Running the Application</h3>
-Navigate to the `application_code` directory run the command `node app.js`. As mentioned in the **Prerequisite** section, make sure that you already have a **MongoDB instance** running before you run this command.
+
+Navigate to the **application_code** directory run the command **node app.js**. As mentioned in the **Prerequisite** section, make sure that you already have a **MongoDB instance** running before you run this command.
+
+<h3>Running the tests</h3>   
+
+Run the command **npm test** to run all the unit tests written. To generate **code coverage** report run the command **npm run test-with-coverage**
 
 <h3>Links</h3>  
 
