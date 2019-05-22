@@ -35,7 +35,7 @@ This project has yet to reach the stage of a minimum viable product. However, mo
 
 <h3>Prerequisites</h3> 
 
-Before working on this project, ensure that there is a **MongoDB instance** running on the local machine.     
+Before working on this project, ensure that there is a **MongoDB instance** running on the local machine at the default port `27017`.
 
 
 <h3>Installing</h3> 
@@ -46,6 +46,8 @@ Navigate to the **application_code** directory run the command **npm install** t
 <h3>Running the Application</h3>
 
 Navigate to the **application_code** directory run the command **node app.js**. As mentioned in the **Prerequisite** section, make sure that you already have a **MongoDB instance** running before you run this command.
+
+Open a web browser, and navigate to `http://localhost:3000` to view the app.
 
 <h3>Running the tests</h3>   
 
